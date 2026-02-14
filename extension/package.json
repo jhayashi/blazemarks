@@ -1,0 +1,21 @@
+{
+  "name": "blazemarks-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "dev:firefox": "wxt --browser firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build --browser firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip --browser firefox"
+  },
+  "dependencies": {
+    "wxt": "^0.20.5"
+  },
+  "devDependencies": {
+    "@wxt-dev/auto-icons": "^1.1.0",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extName": { "message": "Blazemarks" },
+  "extDescription": { "message": "\u5c06\u4e66\u7b7e\u4fdd\u5b58\u5230\u672c\u5730\u4f18\u5148\u7684Blazemarks\u5b9e\u4f8b" },
+  "saveToBlaze": { "message": "\u4fdd\u5b58\u5230Blazemarks" },
+  "readLater": { "message": "\u7a0d\u540e\u5728Blazemarks\u4e2d\u9605\u8bfb" },
+  "commandSave": { "message": "\u5c06\u5f53\u524d\u9875\u9762\u4fdd\u5b58\u4e3a\u4e66\u7b7e" },
+  "saving": { "message": "\u4fdd\u5b58\u4e2d..." },
+  "saved": { "message": "\u5df2\u4fdd\u5b58\uff01" },
+  "noActiveTab": { "message": "\u672a\u627e\u5230\u6d3b\u52a8\u6807\u7b7e\u9875" },
+  "failedToSave": { "message": "\u4fdd\u5b58\u5931\u8d25" },
+  "blazemarksUrl": { "message": "Blazemarks\u7f51\u5740" }
+}

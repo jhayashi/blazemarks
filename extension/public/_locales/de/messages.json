@@ -1,0 +1,12 @@
+{
+  "extName": { "message": "Blazemarks" },
+  "extDescription": { "message": "Lesezeichen in Ihrer lokalen Blazemarks-Instanz speichern" },
+  "saveToBlaze": { "message": "In Blazemarks speichern" },
+  "readLater": { "message": "Sp\u00e4ter in Blazemarks lesen" },
+  "commandSave": { "message": "Aktuelle Seite als Lesezeichen speichern" },
+  "saving": { "message": "Speichern..." },
+  "saved": { "message": "Gespeichert!" },
+  "noActiveTab": { "message": "Kein aktiver Tab gefunden" },
+  "failedToSave": { "message": "Speichern fehlgeschlagen" },
+  "blazemarksUrl": { "message": "Blazemarks-URL" }
+}

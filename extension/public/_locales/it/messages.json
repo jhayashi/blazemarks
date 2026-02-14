@@ -1,0 +1,12 @@
+{
+  "extName": { "message": "Blazemarks" },
+  "extDescription": { "message": "Salva i segnalibri nella tua istanza locale di Blazemarks" },
+  "saveToBlaze": { "message": "Salva in Blazemarks" },
+  "readLater": { "message": "Leggi dopo in Blazemarks" },
+  "commandSave": { "message": "Salva la pagina corrente come segnalibro" },
+  "saving": { "message": "Salvataggio..." },
+  "saved": { "message": "Salvato!" },
+  "noActiveTab": { "message": "Nessuna scheda attiva trovata" },
+  "failedToSave": { "message": "Salvataggio fallito" },
+  "blazemarksUrl": { "message": "URL di Blazemarks" }
+}

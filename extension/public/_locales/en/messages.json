@@ -1,0 +1,42 @@
+{
+  "extName": {
+    "message": "Blazemarks",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Save bookmarks to your local-first Blazemarks instance",
+    "description": "Extension description"
+  },
+  "saveToBlaze": {
+    "message": "Save to Blazemarks",
+    "description": "Context menu item to save a page"
+  },
+  "readLater": {
+    "message": "Read Later in Blazemarks",
+    "description": "Context menu item to save for reading"
+  },
+  "commandSave": {
+    "message": "Save current page as bookmark",
+    "description": "Keyboard shortcut description"
+  },
+  "saving": {
+    "message": "Saving...",
+    "description": "Status while saving"
+  },
+  "saved": {
+    "message": "Saved!",
+    "description": "Status after successful save"
+  },
+  "noActiveTab": {
+    "message": "No active tab found",
+    "description": "Error when no tab is active"
+  },
+  "failedToSave": {
+    "message": "Failed to save",
+    "description": "Error when save fails"
+  },
+  "blazemarksUrl": {
+    "message": "Blazemarks URL",
+    "description": "Label for instance URL input"
+  }
+}

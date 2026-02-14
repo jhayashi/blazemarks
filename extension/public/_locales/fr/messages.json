@@ -1,0 +1,12 @@
+{
+  "extName": { "message": "Blazemarks" },
+  "extDescription": { "message": "Enregistrez des marque-pages dans votre instance locale Blazemarks" },
+  "saveToBlaze": { "message": "Enregistrer dans Blazemarks" },
+  "readLater": { "message": "Lire plus tard dans Blazemarks" },
+  "commandSave": { "message": "Enregistrer la page actuelle comme marque-page" },
+  "saving": { "message": "Enregistrement..." },
+  "saved": { "message": "Enregistr\u00e9 !" },
+  "noActiveTab": { "message": "Aucun onglet actif trouv\u00e9" },
+  "failedToSave": { "message": "\u00c9chec de l'enregistrement" },
+  "blazemarksUrl": { "message": "URL Blazemarks" }
+}

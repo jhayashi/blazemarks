@@ -1,0 +1,12 @@
+{
+  "extName": { "message": "Blazemarks" },
+  "extDescription": { "message": "Guarda marcadores en tu instancia local de Blazemarks" },
+  "saveToBlaze": { "message": "Guardar en Blazemarks" },
+  "readLater": { "message": "Leer m\u00e1s tarde en Blazemarks" },
+  "commandSave": { "message": "Guardar p\u00e1gina actual como marcador" },
+  "saving": { "message": "Guardando..." },
+  "saved": { "message": "\u00a1Guardado!" },
+  "noActiveTab": { "message": "No se encontr\u00f3 pesta\u00f1a activa" },
+  "failedToSave": { "message": "Error al guardar" },
+  "blazemarksUrl": { "message": "URL de Blazemarks" }
+}

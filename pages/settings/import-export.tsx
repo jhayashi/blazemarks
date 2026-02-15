@@ -2,7 +2,7 @@ import { useQuery } from "@evolu/react";
 import { create, props } from "@stylexjs/stylex";
 import { Suspense, useCallback, useRef, useState } from "react";
 import { HamburgerMenu } from "../../components/HamburgerMenu";
-import { Toast, toast } from "../../components/Toast";
+import { Toast, toast } from "elf-components/toast";
 import { useT } from "../../lib/i18n";
 import type { BookmarkId, TagId } from "../../lib/Db";
 import { getGoogleFaviconUrl } from "../../lib/favicon";
@@ -21,17 +21,17 @@ import {
   removeTagFromBookmark,
 } from "../../lib/mutations";
 import {
-  allBookmarkTagsQuery,
-  allBookmarksQuery,
-  allTagsQuery,
+  getAllBookmarkTagsQuery,
+  getAllBookmarksQuery,
+  getAllTagsQuery,
 } from "../../lib/queries";
 import { colors, fonts, fontSizes, spacing } from "../../lib/Tokens.stylex";
 
 function ImportExportContent() {
   const t = useT();
-  const tags = useQuery(allTagsQuery);
-  const bookmarkTags = useQuery(allBookmarkTagsQuery);
-  const bookmarks = useQuery(allBookmarksQuery);
+  const tags = useQuery(getAllTagsQuery());
+  const bookmarkTags = useQuery(getAllBookmarkTagsQuery());
+  const bookmarks = useQuery(getAllBookmarksQuery());
 
   // Import state
   const fileInputRef = useRef<HTMLInputElement>(null);

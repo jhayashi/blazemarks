@@ -4,21 +4,21 @@ import { Suspense, useCallback } from "react";
 import { BookmarkList } from "../components/BookmarkList";
 import { FilterBar } from "../components/FilterBar";
 import { HamburgerMenu } from "../components/HamburgerMenu";
-import { Toast } from "../components/Toast";
+import { Toast } from "elf-components/toast";
 import { useT } from "../lib/i18n";
 import { useSearch } from "../lib/hooks/useSearch";
 import {
-  allBookmarksQuery,
-  allBookmarkTagsQuery,
-  allTagsQuery,
+  getAllBookmarksQuery,
+  getAllBookmarkTagsQuery,
+  getAllTagsQuery,
 } from "../lib/queries";
 import { colors, fonts, fontSizes, spacing } from "../lib/Tokens.stylex";
 
 function ReadingContent() {
   const t = useT();
-  const bookmarks = useQuery(allBookmarksQuery);
-  const tags = useQuery(allTagsQuery);
-  const bookmarkTags = useQuery(allBookmarkTagsQuery);
+  const bookmarks = useQuery(getAllBookmarksQuery());
+  const tags = useQuery(getAllTagsQuery());
+  const bookmarkTags = useQuery(getAllBookmarkTagsQuery());
 
   const { query, setQuery, sortBy, setSortBy, sortDir, setSortDir, filteredBookmarks } = useSearch(
     bookmarks,

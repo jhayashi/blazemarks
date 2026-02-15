@@ -1,4 +1,5 @@
 import {
+  type Evolu,
   SimpleName,
   SqliteBoolean,
   String as EvoluString,
@@ -7,7 +8,6 @@ import {
   id,
   nullOr,
 } from "@evolu/common";
-import { createUseEvolu } from "@evolu/react";
 import { evoluReactWebDeps } from "@evolu/react-web";
 import { getSyncMode } from "./syncPreference";
 
@@ -59,21 +59,30 @@ const Schema = {
 
 export type Database = typeof Schema;
 
-const syncDisabled =
-  typeof window !== "undefined" && getSyncMode() === "local-only";
+let _evolu: Evolu<typeof Schema> | null = null;
 
-export const evolu = createEvolu(evoluReactWebDeps)(Schema, {
-  name: SimpleName.orThrow("Blazemarks"),
-  indexes: (create) => [
-    create("indexBookmarkUrl").on("bookmark").column("url"),
-    create("indexBookmarkIsStarred").on("bookmark").column("isStarred"),
-    create("indexBookmarkTagBookmarkId")
-      .on("bookmarkTag")
-      .column("bookmarkId"),
-    create("indexBookmarkTagTagId").on("bookmarkTag").column("tagId"),
-    create("indexTagName").on("tag").column("name"),
-  ],
-  ...(syncDisabled ? { transports: [] } : {}),
-});
+/** Create (or return cached) Evolu instance. Reads sync mode from localStorage. */
+export function initEvolu() {
+  if (!_evolu) {
+    _evolu = createEvolu(evoluReactWebDeps)(Schema, {
+      name: SimpleName.orThrow("Blazemarks"),
+      indexes: (create) => [
+        create("indexBookmarkUrl").on("bookmark").column("url"),
+        create("indexBookmarkIsStarred").on("bookmark").column("isStarred"),
+        create("indexBookmarkTagBookmarkId")
+          .on("bookmarkTag")
+          .column("bookmarkId"),
+        create("indexBookmarkTagTagId").on("bookmarkTag").column("tagId"),
+        create("indexTagName").on("tag").column("name"),
+      ],
+      ...(getSyncMode() === "local-only" ? { transports: [] } : {}),
+    });
+  }
+  return _evolu;
+}
 
-export const useEvolu = createUseEvolu(evolu);
+/** Get the existing Evolu instance. Throws if called before initEvolu(). */
+export function getEvolu() {
+  if (!_evolu) throw new Error("Evolu not initialized");
+  return _evolu;
+}

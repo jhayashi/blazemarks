@@ -5,13 +5,13 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useT } from "../lib/i18n";
 import { createBookmark, updateBookmark } from "../lib/mutations";
 import { isNewsDomain } from "../lib/newsDomains";
-import { allBookmarksQuery } from "../lib/queries";
+import { getAllBookmarksQuery } from "../lib/queries";
 import { colors, fonts, fontSizes, spacing } from "../lib/Tokens.stylex";
 
 function AddContent() {
   const t = useT();
   const router = useRouter();
-  const bookmarks = useQuery(allBookmarksQuery);
+  const bookmarks = useQuery(getAllBookmarksQuery());
   const savedRef = useRef(false);
   const [status, setStatus] = useState<"saving" | "saved" | "updated" | "error">("saving");
   const [info, setInfo] = useState<{ title?: string; url?: string }>({});

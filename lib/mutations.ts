@@ -4,7 +4,7 @@ import {
   Number as EvoluNumber,
   SqliteBoolean,
 } from "@evolu/common";
-import { evolu } from "./Db";
+import { getEvolu } from "./Db";
 import type { BookmarkId, BookmarkTagId, SettingsId, TagId } from "./Db";
 
 type Str = typeof EvoluString.Type;
@@ -17,7 +17,7 @@ export function createBookmark(fields: {
   favicon?: string | undefined;
   isForReading?: boolean | undefined;
 }) {
-  return evolu.insert("bookmark", {
+  return getEvolu().insert("bookmark", {
     url: fields.url as Str,
     ...(fields.title ? { title: fields.title as Str } : {}),
     ...(fields.description ? { description: fields.description as Str } : {}),
@@ -36,7 +36,7 @@ export function updateBookmark(
     isForReading?: boolean | undefined;
   },
 ) {
-  evolu.update("bookmark", {
+  getEvolu().update("bookmark", {
     id,
     ...(fields.url !== undefined ? { url: fields.url as Str } : {}),
     ...(fields.title !== undefined ? { title: fields.title as Str } : {}),
@@ -51,14 +51,14 @@ export function updateBookmark(
 }
 
 export function deleteBookmark(id: BookmarkId) {
-  evolu.update("bookmark", { id, isDeleted: sqliteTrue });
+  getEvolu().update("bookmark", { id, isDeleted: sqliteTrue });
 }
 
 export function toggleStar(
   id: BookmarkId,
   currentValue: SqliteBoolean | null,
 ) {
-  evolu.update("bookmark", {
+  getEvolu().update("bookmark", {
     id,
     isStarred: (currentValue === sqliteTrue ? null : sqliteTrue) as
       | SqliteBoolean
@@ -70,7 +70,7 @@ export function toggleForReading(
   id: BookmarkId,
   currentValue: SqliteBoolean | null,
 ) {
-  evolu.update("bookmark", {
+  getEvolu().update("bookmark", {
     id,
     isForReading: (currentValue === sqliteTrue ? null : sqliteTrue) as
       | SqliteBoolean
@@ -82,7 +82,7 @@ export function toggleRead(
   id: BookmarkId,
   currentValue: SqliteBoolean | null,
 ) {
-  evolu.update("bookmark", {
+  getEvolu().update("bookmark", {
     id,
     isRead: (currentValue === sqliteTrue ? null : sqliteTrue) as
       | SqliteBoolean
@@ -91,7 +91,7 @@ export function toggleRead(
 }
 
 export function trackVisit(id: BookmarkId, currentCount: number | null) {
-  evolu.update("bookmark", {
+  getEvolu().update("bookmark", {
     id,
     visitCount: ((currentCount ?? 0) + 1) as Num,
     lastVisitedAt: new Date().toISOString() as Str,
@@ -99,27 +99,27 @@ export function trackVisit(id: BookmarkId, currentCount: number | null) {
 }
 
 export function createTag(name: string) {
-  return evolu.insert("tag", { name: name as Str });
+  return getEvolu().insert("tag", { name: name as Str });
 }
 
 export function addTagToBookmark(bookmarkId: BookmarkId, tagId: TagId) {
-  return evolu.insert("bookmarkTag", { bookmarkId, tagId });
+  return getEvolu().insert("bookmarkTag", { bookmarkId, tagId });
 }
 
 export function removeTagFromBookmark(bookmarkTagId: BookmarkTagId) {
-  evolu.update("bookmarkTag", { id: bookmarkTagId, isDeleted: sqliteTrue });
+  getEvolu().update("bookmarkTag", { id: bookmarkTagId, isDeleted: sqliteTrue });
 }
 
 export function updateStarOrder(id: BookmarkId, order: number) {
-  evolu.update("bookmark", { id, starOrder: order as Num });
+  getEvolu().update("bookmark", { id, starOrder: order as Num });
 }
 
 export function updatePageTitle(id: SettingsId, title: string) {
-  evolu.update("settings", { id, pageTitle: title as Str });
+  getEvolu().update("settings", { id, pageTitle: title as Str });
 }
 
 export function updateShowSearchChat(id: SettingsId, show: boolean) {
-  evolu.update("settings", {
+  getEvolu().update("settings", {
     id,
     showSearchChat: show ? sqliteTrue : (0 as typeof SqliteBoolean.Type),
   });
@@ -136,7 +136,8 @@ export function createSettings(fields: {
   if (fields.showSearchChat) {
     data["showSearchChat"] = sqliteTrue;
   }
-  return evolu.insert("settings", data as Parameters<typeof evolu.insert<"settings">>[1]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return getEvolu().insert("settings", data as any);
 }
 
 export function deleteTag(
@@ -145,8 +146,8 @@ export function deleteTag(
 ) {
   for (const bt of bookmarkTagRows) {
     if (bt.tagId === tagId) {
-      evolu.update("bookmarkTag", { id: bt.id, isDeleted: sqliteTrue });
+      getEvolu().update("bookmarkTag", { id: bt.id, isDeleted: sqliteTrue });
     }
   }
-  evolu.update("tag", { id: tagId, isDeleted: sqliteTrue });
+  getEvolu().update("tag", { id: tagId, isDeleted: sqliteTrue });
 }

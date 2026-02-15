@@ -1,54 +1,82 @@
 import { sqliteTrue } from "@evolu/common";
-import { evolu } from "./Db";
+import { getEvolu } from "./Db";
 
-export const allBookmarksQuery = evolu.createQuery((db) =>
-  db
-    .selectFrom("bookmark")
-    .select([
-      "id",
-      "url",
-      "title",
-      "description",
-      "favicon",
-      "visitCount",
-      "lastVisitedAt",
-      "isStarred",
-      "isForReading",
-      "isRead",
-      "starOrder",
-      "createdAt",
-    ])
-    .where("isDeleted", "is not", sqliteTrue)
-    .orderBy("createdAt", "desc"),
-);
+function _createAllBookmarksQuery() {
+  return getEvolu().createQuery((db) =>
+    db
+      .selectFrom("bookmark")
+      .select([
+        "id",
+        "url",
+        "title",
+        "description",
+        "favicon",
+        "visitCount",
+        "lastVisitedAt",
+        "isStarred",
+        "isForReading",
+        "isRead",
+        "starOrder",
+        "createdAt",
+      ])
+      .where("isDeleted", "is not", sqliteTrue)
+      .orderBy("createdAt", "desc"),
+  );
+}
 
-export type BookmarkRow = (typeof allBookmarksQuery)["Row"];
+let _allBookmarksQuery: ReturnType<typeof _createAllBookmarksQuery> | null = null;
+export function getAllBookmarksQuery() {
+  if (!_allBookmarksQuery) _allBookmarksQuery = _createAllBookmarksQuery();
+  return _allBookmarksQuery;
+}
+export type BookmarkRow = ReturnType<typeof _createAllBookmarksQuery>["Row"];
 
-export const allTagsQuery = evolu.createQuery((db) =>
-  db
-    .selectFrom("tag")
-    .select(["id", "name"])
-    .where("isDeleted", "is not", sqliteTrue)
-    .orderBy("name"),
-);
+function _createAllTagsQuery() {
+  return getEvolu().createQuery((db) =>
+    db
+      .selectFrom("tag")
+      .select(["id", "name"])
+      .where("isDeleted", "is not", sqliteTrue)
+      .orderBy("name"),
+  );
+}
 
-export type TagRow = (typeof allTagsQuery)["Row"];
+let _allTagsQuery: ReturnType<typeof _createAllTagsQuery> | null = null;
+export function getAllTagsQuery() {
+  if (!_allTagsQuery) _allTagsQuery = _createAllTagsQuery();
+  return _allTagsQuery;
+}
+export type TagRow = ReturnType<typeof _createAllTagsQuery>["Row"];
 
-export const allBookmarkTagsQuery = evolu.createQuery((db) =>
-  db
-    .selectFrom("bookmarkTag")
-    .select(["id", "bookmarkId", "tagId"])
-    .where("isDeleted", "is not", sqliteTrue),
-);
+function _createAllBookmarkTagsQuery() {
+  return getEvolu().createQuery((db) =>
+    db
+      .selectFrom("bookmarkTag")
+      .select(["id", "bookmarkId", "tagId"])
+      .where("isDeleted", "is not", sqliteTrue),
+  );
+}
 
-export type BookmarkTagRow = (typeof allBookmarkTagsQuery)["Row"];
+let _allBookmarkTagsQuery: ReturnType<typeof _createAllBookmarkTagsQuery> | null = null;
+export function getAllBookmarkTagsQuery() {
+  if (!_allBookmarkTagsQuery) _allBookmarkTagsQuery = _createAllBookmarkTagsQuery();
+  return _allBookmarkTagsQuery;
+}
+export type BookmarkTagRow = ReturnType<typeof _createAllBookmarkTagsQuery>["Row"];
 
-export const settingsQuery = evolu.createQuery((db) =>
-  db
-    .selectFrom("settings")
-    .select(["id", "pageTitle", "showSearchChat"])
-    .where("isDeleted", "is not", sqliteTrue)
-    .limit(1),
-);
+function _createSettingsQuery() {
+  return getEvolu().createQuery((db) =>
+    db
+      .selectFrom("settings")
+      .select(["id", "pageTitle", "showSearchChat"])
+      .where("isDeleted", "is not", sqliteTrue)
+      .limit(1),
+  );
+}
 
-export type SettingsRow = (typeof settingsQuery)["Row"];
+let _settingsQuery: ReturnType<typeof _createSettingsQuery> | null = null;
+export function getSettingsQuery() {
+  if (!_settingsQuery) _settingsQuery = _createSettingsQuery();
+  return _settingsQuery;
+}
+export type SettingsRow = ReturnType<typeof _createSettingsQuery>["Row"];

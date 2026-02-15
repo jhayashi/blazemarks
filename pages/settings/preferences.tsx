@@ -3,15 +3,21 @@ import { useQuery } from "@evolu/react";
 import { create, props } from "@stylexjs/stylex";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HamburgerMenu } from "../../components/HamburgerMenu";
-import { Toast, toast } from "../../components/Toast";
+import { Toast, toast } from "elf-components/toast";
+import { ThemePicker } from "elf-components/settings/theme-picker";
+import { AppearancePicker } from "elf-components/settings/appearance-picker";
+import { AccountSection } from "elf-components/settings/account";
+import { SyncSection } from "elf-components/settings/sync";
+import { bundledThemes } from "elf-components/theme-files";
+import type { Appearance } from "elf-components/theme";
 import { useT, useLocale } from "../../lib/i18n";
 import { locales, localeNames } from "../../lib/i18n/types";
 import type { Locale } from "../../lib/i18n/types";
-import { evolu } from "../../lib/Db";
+import { getEvolu } from "../../lib/Db";
 import { getSyncMode, setSyncMode, type SyncMode } from "../../lib/syncPreference";
 import { generateBookmarkletCode } from "../../lib/bookmarklet";
 import { createSettings, updateShowSearchChat } from "../../lib/mutations";
-import { settingsQuery } from "../../lib/queries";
+import { getSettingsQuery } from "../../lib/queries";
 import type { SearchProviderId, ChatProviderId } from "../../lib/providers";
 import {
   searchProviders,
@@ -21,23 +27,18 @@ import {
   getChatProviderId,
   setChatProviderId,
 } from "../../lib/providers";
-import { bundledThemes } from "../../lib/themes";
-import {
-  applyZedTheme,
-  getSelectedThemeId,
-  setSelectedTheme,
-} from "../../lib/theme";
 import { colors, fonts, fontSizes, spacing } from "../../lib/Tokens.stylex";
+import { themeManager } from "../_app";
 
 export default function Preferences() {
   const t = useT();
   const { locale, setLocale } = useLocale();
-  const settings = useQuery(settingsQuery);
+  const settings = useQuery(getSettingsQuery());
   const settingsRow = settings.length > 0 ? settings[0] : undefined;
 
   const [owner, setOwner] = useState<AppOwner | null>(null);
-  const [showMnemonic, setShowMnemonic] = useState(false);
   const [activeThemeId, setActiveThemeId] = useState<string>("");
+  const [appearance, setAppearanceState] = useState<Appearance>("system");
 
   const [activeSearchProvider, setActiveSearchProvider] =
     useState<SearchProviderId>("google");
@@ -46,30 +47,35 @@ export default function Preferences() {
   const [syncMode, setSyncModeState] = useState<SyncMode>("enabled");
 
   useEffect(() => {
-    void evolu.appOwner.then(setOwner);
-    setActiveThemeId(getSelectedThemeId());
+    void getEvolu().appOwner.then(setOwner);
+    setActiveThemeId(themeManager.getSelectedId());
+    setAppearanceState(themeManager.getAppearance());
     setActiveSearchProvider(getSearchProviderId());
     setActiveChatProvider(getChatProviderId());
     setSyncModeState(getSyncMode());
   }, []);
 
   const handleThemeSelect = useCallback((id: string) => {
-    const entry = bundledThemes.find((t) => t.id === id);
-    if (!entry) return;
-    setSelectedTheme(id);
+    themeManager.setSelected(id);
     setActiveThemeId(id);
-    applyZedTheme(entry.file);
+    themeManager.applySelected();
+  }, []);
+
+  const handleAppearanceChange = useCallback((value: Appearance) => {
+    themeManager.setAppearance(value);
+    setAppearanceState(value);
+    themeManager.applySelected();
   }, []);
 
   const handleRestoreOwner = useCallback(() => {
-    const mnemonic = window.prompt(t("settings.enterMnemonic"));
+    const mnemonic = window.prompt(t("settings.enterIdentityPhrase"));
     if (!mnemonic) return;
     const result = Mnemonic.from(mnemonic);
     if (!result.ok) {
-      alert(t("settings.invalidMnemonic"));
+      alert(t("settings.invalidIdentityPhrase"));
       return;
     }
-    void evolu.restoreAppOwner(result.value);
+    void getEvolu().restoreAppOwner(result.value);
   }, [t]);
 
   const handleSyncToggle = useCallback(() => {
@@ -85,7 +91,7 @@ export default function Preferences() {
 
   const handleResetOwner = useCallback(() => {
     if (confirm(t("settings.confirmReset"))) {
-      void evolu.resetAppOwner();
+      void getEvolu().resetAppOwner();
     }
   }, [t]);
 
@@ -213,20 +219,19 @@ export default function Preferences() {
 
       <section {...props(styles.section)}>
         <h2 {...props(styles.sectionTitle)}>{t("settings.theme")}</h2>
-        <div {...props(styles.themeGrid)}>
-          {bundledThemes.map((theme) => (
-            <button
-              key={theme.id}
-              onClick={() => handleThemeSelect(theme.id)}
-              {...props(
-                styles.themeButton,
-                activeThemeId === theme.id && styles.themeButtonActive,
-              )}
-            >
-              {theme.name}
-            </button>
-          ))}
-        </div>
+        <ThemePicker
+          themes={bundledThemes}
+          activeThemeId={activeThemeId}
+          onSelect={handleThemeSelect}
+        />
+      </section>
+
+      <section {...props(styles.section)}>
+        <h2 {...props(styles.sectionTitle)}>{t("settings.appearance")}</h2>
+        <AppearancePicker
+          appearance={appearance}
+          onChange={handleAppearanceChange}
+        />
       </section>
 
       <section {...props(styles.section)}>
@@ -244,41 +249,27 @@ export default function Preferences() {
         </select>
       </section>
 
-      <section {...props(styles.section)}>
-        <h2 {...props(styles.sectionTitle)}>{t("settings.account")}</h2>
-        <button
-          onClick={() => setShowMnemonic(!showMnemonic)}
-          {...props(styles.button)}
-        >
-          {showMnemonic ? t("settings.hideMnemonic") : t("settings.showMnemonic")}
-        </button>
-        {showMnemonic && owner && (
-          <p {...props(styles.mnemonic)}>{owner.mnemonic}</p>
-        )}
-        <button onClick={handleRestoreOwner} {...props(styles.button)}>
-          {t("settings.restoreOwner")}
-        </button>
-        <button onClick={handleResetOwner} {...props(styles.buttonDanger)}>
-          {t("settings.resetOwner")}
-        </button>
-      </section>
+      <AccountSection
+        owner={owner?.mnemonic ? { mnemonic: owner.mnemonic } : null}
+        onRestore={handleRestoreOwner}
+        onReset={handleResetOwner}
+        title={t("settings.account")}
+        labels={{
+          showIdentityPhrase: t("settings.showIdentityPhrase"),
+          hideIdentityPhrase: t("settings.hideIdentityPhrase"),
+          restore: t("settings.restoreIdentity"),
+          reset: t("settings.resetAllData"),
+        }}
+      />
 
-      <section {...props(styles.section)}>
-        <h2 {...props(styles.sectionTitle)}>{t("settings.sync")}</h2>
-        <p {...props(styles.helpText)}>{t("settings.syncHelp")}</p>
-        <label {...props(styles.toggleRow)}>
-          <input
-            type="checkbox"
-            checked={syncMode === "enabled"}
-            onChange={handleSyncToggle}
-          />
-          <span {...props(styles.toggleLabel)}>
-            {syncMode === "enabled"
-              ? t("settings.syncEnabled")
-              : t("settings.syncDisabled")}
-          </span>
-        </label>
-      </section>
+      <SyncSection
+        enabled={syncMode === "enabled"}
+        onToggle={handleSyncToggle}
+        title={t("settings.sync")}
+        helpText={t("settings.syncHelp")}
+        enabledLabel={t("settings.syncEnabled")}
+        disabledLabel={t("settings.syncDisabled")}
+      />
 
       <Toast />
     </div>
@@ -382,31 +373,6 @@ const styles = create({
       borderColor: colors.accent,
     },
   },
-  themeGrid: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: spacing.xs,
-  },
-  themeButton: {
-    paddingBlock: spacing.xs,
-    paddingInline: spacing.s,
-    fontSize: fontSizes.step_1,
-    fontFamily: fonts.sans,
-    color: colors.primary,
-    backgroundColor: colors.hoverAndFocusBackground,
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: colors.border,
-    borderRadius: 6,
-    cursor: "pointer",
-    ":hover": {
-      borderColor: colors.accent,
-    },
-  },
-  themeButtonActive: {
-    borderColor: colors.accent,
-    color: colors.accent,
-  },
   button: {
     alignSelf: "flex-start",
     paddingBlock: spacing.xs,
@@ -423,32 +389,5 @@ const styles = create({
     ":hover": {
       borderColor: colors.accent,
     },
-  },
-  buttonDanger: {
-    alignSelf: "flex-start",
-    paddingBlock: spacing.xs,
-    paddingInline: spacing.s,
-    fontSize: fontSizes.step_1,
-    fontFamily: fonts.sans,
-    color: colors.error,
-    backgroundColor: colors.hoverAndFocusBackground,
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: colors.border,
-    borderRadius: 6,
-    cursor: "pointer",
-    ":hover": {
-      borderColor: colors.error,
-    },
-  },
-  mnemonic: {
-    textWrap: "balance",
-    textAlign: "center",
-    fontFamily: fonts.mono,
-    color: colors.primary,
-    fontSize: fontSizes.step_1,
-    padding: spacing.s,
-    backgroundColor: colors.hoverAndFocusBackground,
-    borderRadius: 6,
   },
 });

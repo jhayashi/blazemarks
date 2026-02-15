@@ -7,7 +7,7 @@ import { EditableTitle } from "../components/EditableTitle";
 import { FilterBar } from "../components/FilterBar";
 import { HamburgerMenu } from "../components/HamburgerMenu";
 import { StarredShortcuts } from "../components/StarredShortcuts";
-import { Toast } from "../components/Toast";
+import { Toast } from "elf-components/toast";
 import { useT } from "../lib/i18n";
 import { useSearch } from "../lib/hooks/useSearch";
 import {
@@ -19,19 +19,19 @@ import {
 } from "../lib/providers";
 import type { ChatProviderId, SearchProviderId } from "../lib/providers";
 import {
-  allBookmarksQuery,
-  allBookmarkTagsQuery,
-  allTagsQuery,
-  settingsQuery,
+  getAllBookmarksQuery,
+  getAllBookmarkTagsQuery,
+  getAllTagsQuery,
+  getSettingsQuery,
 } from "../lib/queries";
 import { colors, fonts, fontSizes, spacing } from "../lib/Tokens.stylex";
 
 function HomeContent() {
   const t = useT();
-  const bookmarks = useQuery(allBookmarksQuery);
-  const tags = useQuery(allTagsQuery);
-  const bookmarkTags = useQuery(allBookmarkTagsQuery);
-  const settings = useQuery(settingsQuery);
+  const bookmarks = useQuery(getAllBookmarksQuery());
+  const tags = useQuery(getAllTagsQuery());
+  const bookmarkTags = useQuery(getAllBookmarkTagsQuery());
+  const settings = useQuery(getSettingsQuery());
 
   const settingsRow = settings.length > 0 ? settings[0] : undefined;
 

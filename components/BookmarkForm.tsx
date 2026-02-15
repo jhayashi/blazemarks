@@ -11,7 +11,7 @@ import {
 } from "../lib/mutations";
 import { useT } from "../lib/i18n";
 import { TagChip } from "./TagChip";
-import { toast } from "./Toast";
+import { toast } from "elf-components/toast";
 import { colors, fonts, fontSizes, spacing } from "../lib/Tokens.stylex";
 
 interface BookmarkFormProps {

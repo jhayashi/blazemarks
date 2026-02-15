@@ -8,6 +8,7 @@ module.exports = {
         "components/**/*.{ts,tsx}",
         "lib/**/*.{ts,tsx}",
         "pages/**/*.{ts,tsx}",
+        "node_modules/elf-components/src/**/*.{ts,tsx}",
       ],
       babelConfig: babelConfig,
       // when `true`, Stylex can't override RNfW styles for some reason.

@@ -85,7 +85,7 @@ const faqs: FaqItem[] = [
   {
     question: "How do I sync my bookmarks to my phone, tablet, or other browsers?",
     answer:
-      "BlazeMarks automatically syncs across all your devices for free. Just open BlazeMarks in any web browser on your phone, tablet, or another computer and restore your account using your recovery mnemonic (found in Settings \u2192 Account). Your bookmarks will sync using Evolu\u2019s encrypted, peer-to-peer sync technology. No account creation or sign-up required.",
+      "BlazeMarks automatically syncs across all your devices for free. Just open BlazeMarks in any web browser on your phone, tablet, or another computer and restore your identity using your identity phrase (found in Settings \u2192 Account). Your bookmarks will sync using Evolu\u2019s encrypted, peer-to-peer sync technology. No account creation or sign-up required.",
   },
   {
     question: "How do I use AI to tag my bookmarks?",
@@ -115,12 +115,12 @@ const faqs: FaqItem[] = [
   {
     question: "Where is my data stored?",
     answer:
-      "All your data is stored locally in your browser using IndexedDB. Nothing is sent to any server. This means your bookmarks are private and work offline, but they\u2019re tied to your browser. If you clear browser data, your bookmarks will be lost unless you\u2019ve saved your recovery mnemonic (Settings \u2192 Account section).",
+      "All your data is stored locally in your browser using IndexedDB. Nothing is sent to any server. This means your bookmarks are private and work offline, but they\u2019re tied to your browser. If you clear browser data, your bookmarks will be lost unless you\u2019ve saved your identity phrase (Settings \u2192 Account section).",
   },
   {
     question: "Can I sync across devices?",
     answer:
-      "Yes! BlazeMarks syncs automatically and for free across all your devices. Open BlazeMarks on any device, go to Settings \u2192 Account, and use \u201cRestore Owner\u201d with your recovery mnemonic to link them. Sync is powered by Evolu\u2019s encrypted CRDT technology \u2014 your data is end-to-end encrypted and no one else can read it.",
+      "Yes! BlazeMarks syncs automatically and for free across all your devices. Open BlazeMarks on any device, go to Settings \u2192 Account, and use \u201cRestore Identity\u201d with your identity phrase to access your data. Sync is powered by Evolu\u2019s encrypted CRDT technology \u2014 your data is end-to-end encrypted and no one else can read it.",
   },
   {
     question: "How do I change the theme?",

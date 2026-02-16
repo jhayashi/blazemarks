@@ -8,5 +8,14 @@
   "saved": { "message": "Salvato!" },
   "noActiveTab": { "message": "Nessuna scheda attiva trovata" },
   "failedToSave": { "message": "Salvataggio fallito" },
-  "blazemarksUrl": { "message": "URL di Blazemarks" }
+  "blazemarksUrl": { "message": "URL di Blazemarks" },
+  "blazemarksUrlDescription": { "message": "L'URL della tua istanza Blazemarks. Modifica solo se stai ospitando autonomamente." },
+  "optionsTitle": { "message": "Impostazioni Blazemarks" },
+  "newTabLabel": { "message": "Apri Blazemarks in una nuova scheda" },
+  "newTabDescription": { "message": "Reindirizza le nuove schede alla tua istanza Blazemarks." },
+  "permissionDenied": { "message": "Autorizzazione del browser negata. Riprova e accetta l'autorizzazione per utilizzare questa funzione." },
+  "shortcutLabel": { "message": "Scorciatoia da tastiera" },
+  "shortcutDescription": { "message": "Salva la pagina corrente come segnalibro." },
+  "shortcutWarning": { "message": "Nessuna scorciatoia assegnata. Potrebbe essere stata rimossa a causa di un conflitto. Clicca su \"Configura\"." },
+  "shortcutConfigure": { "message": "Configura" }
 }

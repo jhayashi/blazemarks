@@ -38,5 +38,41 @@
   "blazemarksUrl": {
     "message": "Blazemarks URL",
     "description": "Label for instance URL input"
+  },
+  "blazemarksUrlDescription": {
+    "message": "The URL of your Blazemarks instance. Only change this if you are self-hosting.",
+    "description": "Description for instance URL setting"
+  },
+  "optionsTitle": {
+    "message": "Blazemarks Settings",
+    "description": "Options page title"
+  },
+  "newTabLabel": {
+    "message": "Open Blazemarks on new tab",
+    "description": "Label for new tab redirect toggle"
+  },
+  "newTabDescription": {
+    "message": "Redirect new tabs to your Blazemarks instance.",
+    "description": "Description for new tab redirect setting"
+  },
+  "permissionDenied": {
+    "message": "Browser permission was denied. Please try again and accept the permission to use this feature.",
+    "description": "Warning when tabs permission is denied"
+  },
+  "shortcutLabel": {
+    "message": "Keyboard shortcut",
+    "description": "Label for keyboard shortcut section"
+  },
+  "shortcutDescription": {
+    "message": "Save the current page as a bookmark.",
+    "description": "Description for keyboard shortcut"
+  },
+  "shortcutWarning": {
+    "message": "No shortcut is assigned. It may have been removed due to a conflict. Click \"Configure\" to set one.",
+    "description": "Warning when shortcut is not assigned"
+  },
+  "shortcutConfigure": {
+    "message": "Configure",
+    "description": "Button to open browser shortcut settings"
   }
 }

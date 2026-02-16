@@ -17,7 +17,7 @@ Try it out at [https://blazemarks.com](https://blazemarks.com).
 - **Themes** — Multiple color themes (Catppuccin, Flexoki, GitHub, Xcode, and more).
 - **PWA** — Install as a progressive web app on any device.
 - **Bookmarklet** — One-click save from any browser.
-- **Browser extension** — Chrome/Firefox extension with keyboard shortcut and context menu support.
+- **Browser extension** — Chrome/Firefox extension to save bookmarks.
 
 ## Getting Started
 

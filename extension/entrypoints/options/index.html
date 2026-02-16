@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="options">
+      <h1 id="options-title">Blazemarks Settings</h1>
+
+      <section class="setting-group">
+        <label for="instance-url" id="url-label">Blazemarks URL</label>
+        <p class="setting-description" id="url-description">
+          The URL of your Blazemarks instance. Only change this if you are
+          self-hosting.
+        </p>
+        <input
+          type="url"
+          id="instance-url"
+          placeholder="https://blazemarks.com/"
+        />
+      </section>
+
+      <section class="setting-group">
+        <div class="toggle-row">
+          <div>
+            <label for="newtab-toggle" id="newtab-label"
+              >Open Blazemarks on new tab</label
+            >
+            <p class="setting-description" id="newtab-description">
+              Redirect new tabs to your Blazemarks instance.
+            </p>
+          </div>
+          <input type="checkbox" id="newtab-toggle" />
+        </div>
+        <p class="permission-note hidden" id="permission-denied">
+          Browser permission was denied. Please try again and accept the
+          permission to use this feature.
+        </p>
+      </section>
+
+      <section class="setting-group">
+        <label id="shortcut-label">Keyboard shortcut</label>
+        <p class="setting-description" id="shortcut-description">
+          Save the current page as a bookmark.
+        </p>
+        <div class="shortcut-row">
+          <kbd id="shortcut-value">—</kbd>
+          <button id="shortcut-configure" type="button">Configure</button>
+        </div>
+        <p class="warning hidden" id="shortcut-warning">
+          No shortcut is assigned. It may have been removed due to a conflict.
+          Click "Configure" to set one.
+        </p>
+      </section>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

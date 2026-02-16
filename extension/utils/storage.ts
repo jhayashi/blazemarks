@@ -1,4 +1,9 @@
 export const blazemarksUrl = storage.defineItem<string>(
   "local:blazemarksUrl",
-  { fallback: "http://localhost:3000" },
+  { fallback: "https://blazemarks.com/" },
+);
+
+export const newTabRedirect = storage.defineItem<boolean>(
+  "local:newTabRedirect",
+  { fallback: false },
 );

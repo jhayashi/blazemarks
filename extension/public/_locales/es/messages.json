@@ -8,5 +8,14 @@
   "saved": { "message": "\u00a1Guardado!" },
   "noActiveTab": { "message": "No se encontr\u00f3 pesta\u00f1a activa" },
   "failedToSave": { "message": "Error al guardar" },
-  "blazemarksUrl": { "message": "URL de Blazemarks" }
+  "blazemarksUrl": { "message": "URL de Blazemarks" },
+  "blazemarksUrlDescription": { "message": "La URL de tu instancia de Blazemarks. Solo c\u00e1mbiala si alojas tu propia instancia." },
+  "optionsTitle": { "message": "Configuraci\u00f3n de Blazemarks" },
+  "newTabLabel": { "message": "Abrir Blazemarks en nueva pesta\u00f1a" },
+  "newTabDescription": { "message": "Redirigir nuevas pesta\u00f1as a tu instancia de Blazemarks." },
+  "permissionDenied": { "message": "Se deneg\u00f3 el permiso del navegador. Int\u00e9ntalo de nuevo y acepta el permiso para usar esta funci\u00f3n." },
+  "shortcutLabel": { "message": "Atajo de teclado" },
+  "shortcutDescription": { "message": "Guardar la p\u00e1gina actual como marcador." },
+  "shortcutWarning": { "message": "No hay atajo asignado. Puede haberse eliminado por un conflicto. Haz clic en \"Configurar\" para asignar uno." },
+  "shortcutConfigure": { "message": "Configurar" }
 }

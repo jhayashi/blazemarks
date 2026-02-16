@@ -15,6 +15,9 @@ export default defineConfig({
       "contextMenus",
       ...(browser === "firefox" ? (["tabs"] as const) : []),
     ],
+    optional_permissions: [
+      ...(browser === "firefox" ? [] : (["tabs"] as const)),
+    ],
     browser_specific_settings: {
       gecko: {
         id: "blazemarks@blazemarks.com",
@@ -26,7 +29,7 @@ export default defineConfig({
     },
     commands: {
       "save-bookmark": {
-        suggested_key: { default: "Ctrl+Shift+B", mac: "Command+Shift+B" },
+        suggested_key: { default: "Ctrl+Shift+8", mac: "Command+Shift+8" },
         description: "__MSG_commandSave__",
       },
     },

@@ -5,10 +5,6 @@ const statusIcon = document.getElementById("status-icon")!;
 const statusText = document.getElementById("status-text")!;
 const pageTitle = document.getElementById("page-title")!;
 const pageUrl = document.getElementById("page-url")!;
-const instanceUrlInput = document.getElementById(
-  "instance-url",
-) as HTMLInputElement;
-
 async function saveCurrentTab() {
   try {
     const [tab] = await browser.tabs.query({
@@ -51,22 +47,7 @@ function showError(message: string) {
   statusText.className = "error";
 }
 
-async function loadSettings() {
-  const url = await blazemarksUrl.getValue();
-  instanceUrlInput.value = url;
-}
-
-instanceUrlInput.addEventListener("change", () => {
-  const value = instanceUrlInput.value.trim();
-  if (value) {
-    blazemarksUrl.setValue(value);
-  }
-});
-
 // Localize static text
 statusText.textContent = browser.i18n.getMessage("saving");
-const urlLabel = document.querySelector('label[for="instance-url"]');
-if (urlLabel) urlLabel.textContent = browser.i18n.getMessage("blazemarksUrl");
 
-loadSettings();
 saveCurrentTab();

@@ -119,7 +119,11 @@ export interface Translations {
 
   // Settings / Preferences
   "settings.title": string;
-  "settings.bookmarklet": string;
+  "settings.savingBookmarks": string;
+  "settings.extensionHelp": string;
+  "settings.chromeExtension": string;
+  "settings.firefoxExtension": string;
+  "settings.bookmarkletSubheading": string;
   "settings.bookmarkletHelp": string;
   "settings.copy": string;
   "settings.searchChat": string;

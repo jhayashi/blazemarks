@@ -158,7 +158,29 @@ export default function Preferences() {
       </div>
 
       <section {...props(styles.section)}>
-        <h2 {...props(styles.sectionTitle)}>{t("settings.bookmarklet")}</h2>
+        <h2 {...props(styles.sectionTitle)}>{t("settings.savingBookmarks")}</h2>
+        <p {...props(styles.helpText)}>
+          {t("settings.extensionHelp")}
+        </p>
+        <div {...props(styles.extensionLinks)}>
+          <a
+            href="https://chromewebstore.google.com/detail/blazemarks/fdcdkhejnjjdmijdnmiinfmldkmflomh"
+            target="_blank"
+            rel="noopener noreferrer"
+            {...props(styles.extensionLink)}
+          >
+            {t("settings.chromeExtension")}
+          </a>
+          <a
+            href="https://addons.mozilla.org/en-US/firefox/addon/blazemarks/"
+            target="_blank"
+            rel="noopener noreferrer"
+            {...props(styles.extensionLink)}
+          >
+            {t("settings.firefoxExtension")}
+          </a>
+        </div>
+        <h3 {...props(styles.subheading)}>{t("settings.bookmarkletSubheading")}</h3>
         <p {...props(styles.helpText)}>
           {t("settings.bookmarkletHelp")}
         </p>
@@ -366,6 +388,34 @@ const styles = create({
     fontSize: fontSizes.step_1,
     fontFamily: fonts.sans,
     color: colors.primary,
+  },
+  subheading: {
+    fontSize: fontSizes.step0,
+    fontFamily: fonts.sans,
+    color: colors.primary,
+    fontWeight: 600,
+    margin: 0,
+  },
+  extensionLinks: {
+    display: "flex",
+    gap: spacing.s,
+    flexWrap: "wrap",
+  },
+  extensionLink: {
+    paddingBlock: spacing.xs,
+    paddingInline: spacing.s,
+    fontSize: fontSizes.step_1,
+    fontFamily: fonts.sans,
+    color: colors.primary,
+    backgroundColor: colors.hoverAndFocusBackground,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: colors.border,
+    borderRadius: 6,
+    textDecoration: "none",
+    ":hover": {
+      borderColor: colors.accent,
+    },
   },
   helpText: {
     fontSize: fontSizes.step_1,

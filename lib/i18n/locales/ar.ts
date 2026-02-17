@@ -83,9 +83,13 @@ const ar: Translations = {
 
   // Settings / Preferences
   "settings.title": "الإعدادات",
-  "settings.bookmarklet": "أداة الإشارات المرجعية",
+  "settings.savingBookmarks": "حفظ الإشارات المرجعية",
+  "settings.extensionHelp": "ثبّت إضافة المتصفح لأسهل طريقة لحفظ الإشارات المرجعية:",
+  "settings.chromeExtension": "إضافة Chrome",
+  "settings.firefoxExtension": "إضافة Firefox",
+  "settings.bookmarkletSubheading": "أداة الإشارات المرجعية",
   "settings.bookmarkletHelp":
-    "اسحب هذا الرابط إلى شريط الإشارات المرجعية، أو انسخ الكود أدناه:",
+    "بدلاً من ذلك، اسحب هذا الرابط إلى شريط الإشارات المرجعية، أو انسخ الكود أدناه:",
   "settings.copy": "نسخ",
   "settings.searchChat": "البحث والمحادثة",
   "settings.showSearchChat": "إظهار أزرار البحث والمحادثة في الصفحة الرئيسية",

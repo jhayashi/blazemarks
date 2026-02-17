@@ -83,9 +83,13 @@ const de: Translations = {
 
   // Settings / Preferences
   "settings.title": "Einstellungen",
-  "settings.bookmarklet": "Bookmarklet",
+  "settings.savingBookmarks": "Lesezeichen speichern",
+  "settings.extensionHelp": "Installiere die Browser-Erweiterung für den einfachsten Weg, Lesezeichen zu speichern:",
+  "settings.chromeExtension": "Chrome-Erweiterung",
+  "settings.firefoxExtension": "Firefox-Erweiterung",
+  "settings.bookmarkletSubheading": "Bookmarklet",
   "settings.bookmarkletHelp":
-    "Ziehe diesen Link in deine Lesezeichenleiste oder kopiere den Code unten:",
+    "Alternativ ziehe diesen Link in deine Lesezeichenleiste oder kopiere den Code unten:",
   "settings.copy": "Kopieren",
   "settings.searchChat": "Suche & Chat",
   "settings.showSearchChat":

@@ -40,17 +40,17 @@ const faqs: FaqItem[] = [
   {
     question: "How do I get started?",
     answer:
-      "BlazeMarks works right out of the box with no account or setup required. Your bookmarks are stored locally in your browser. To start saving bookmarks, you can use the bookmarklet (Settings \u2192 Bookmarklet section), install the browser extension, or import existing bookmarks from another browser (Import / Export).\n\nBlazeMarks syncs for free across all your devices with a web browser. It uses Evolu, a local-first sync technology built on CRDTs. You can read more about how it works at [evolu.dev](https://evolu.dev).",
+      "BlazeMarks works right out of the box with no account or setup required. Your bookmarks are stored locally in your browser. To start saving bookmarks, install the browser extension for [Chrome / Edge / Brave](https://chromewebstore.google.com/detail/blazemarks/fdcdkhejnjjdmijdnmiinfmldkmflomh) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/blazemarks/), use the bookmarklet (Settings \u2192 Saving Bookmarks), or import existing bookmarks from another browser (Import / Export).\n\nBlazeMarks syncs for free across all your devices with a web browser. It uses Evolu, a local-first sync technology built on CRDTs. You can read more about how it works at [evolu.dev](https://evolu.dev).",
   },
   {
     question: "How do I bookmark a site?",
     answer:
-      "There are three ways to save a bookmark:\n\n\u2022 Browser extension \u2014 Click the BlazeMarks icon in your toolbar or press Ctrl+Shift+B (Cmd+Shift+B on Mac) to instantly save the current page.\n\u2022 Bookmarklet \u2014 Go to Settings, then drag the \u201c+ BlazeMarks\u201d button to your bookmarks bar. Click it on any page to save.\n\u2022 Manually \u2014 You can also import bookmarks from an HTML file via Import / Export.",
+      "There are three ways to save a bookmark:\n\n\u2022 Browser extension \u2014 Click the BlazeMarks icon in your toolbar or press Ctrl+Shift+8 (Cmd+Shift+8 on Mac) to instantly save the current page.\n\u2022 Bookmarklet \u2014 Go to Settings, then drag the \u201c+ BlazeMarks\u201d button to your bookmarks bar. Click it on any page to save.\n\u2022 Manually \u2014 You can also import bookmarks from an HTML file via Import / Export.",
   },
   {
     question: "How do I install the extension?",
     answer:
-      "The BlazeMarks browser extension is available for Chrome, Edge, Brave, Firefox, and other Chromium-based browsers.\n\nVisit the BlazeMarks extension page on your browser\u2019s add-on store and click \u201cAdd to Chrome\u201d (or \u201cAdd to Firefox\u201d). Once installed, you\u2019ll see the BlazeMarks icon in your browser toolbar.\n\nClick the icon on any page to save it as a bookmark. The first time you use it, you may want to open the popup and set your BlazeMarks URL if it\u2019s different from the default (http://localhost:3000). You can also toggle whether new tabs open BlazeMarks.",
+      "The BlazeMarks browser extension is available for Chrome, Edge, Brave, Firefox, and other Chromium-based browsers.\n\nInstall for [Chrome / Edge / Brave](https://chromewebstore.google.com/detail/blazemarks/fdcdkhejnjjdmijdnmiinfmldkmflomh) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/blazemarks/). Once installed, you\u2019ll see the BlazeMarks icon in your browser toolbar.\n\nClick the icon on any page to save it as a bookmark. You can also toggle whether new tabs open BlazeMarks in the extension options.",
   },
   {
     question: "How do I import my bookmarks?",
@@ -160,7 +160,7 @@ const faqs: FaqItem[] = [
   {
     question: "Are there any metrics or ad trackers?",
     answer:
-      "No. BlazeMarks has zero analytics, tracking, or advertising. There are no cookies, no telemetry, and no data sent to any server. Everything stays in your browser.",
+      "No. BlazeMarks has zero analytics, tracking, or advertising. There are no cookies, no telemetry, and no tracking data sent to any server. Everything stays in your browser.",
   },
   {
     question: "How do you make money?",

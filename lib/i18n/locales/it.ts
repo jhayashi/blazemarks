@@ -83,9 +83,13 @@ const it: Translations = {
 
   // Settings / Preferences
   "settings.title": "Impostazioni",
-  "settings.bookmarklet": "Bookmarklet",
+  "settings.savingBookmarks": "Salvare i Segnalibri",
+  "settings.extensionHelp": "Installa l'estensione del browser per il modo più semplice di salvare i segnalibri:",
+  "settings.chromeExtension": "Estensione Chrome",
+  "settings.firefoxExtension": "Estensione Firefox",
+  "settings.bookmarkletSubheading": "Bookmarklet",
   "settings.bookmarkletHelp":
-    "Trascina questo link nella barra dei segnalibri, oppure copia il codice qui sotto:",
+    "In alternativa, trascina questo link nella barra dei segnalibri, oppure copia il codice qui sotto:",
   "settings.copy": "Copia",
   "settings.searchChat": "Ricerca e Chat",
   "settings.showSearchChat":

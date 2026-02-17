@@ -83,9 +83,13 @@ const ko: Translations = {
 
   // Settings / Preferences
   "settings.title": "설정",
-  "settings.bookmarklet": "북마클릿",
+  "settings.savingBookmarks": "북마크 저장",
+  "settings.extensionHelp": "브라우저 확장 프로그램을 설치하면 가장 쉽게 북마크를 저장할 수 있습니다:",
+  "settings.chromeExtension": "Chrome 확장",
+  "settings.firefoxExtension": "Firefox 확장",
+  "settings.bookmarkletSubheading": "북마클릿",
   "settings.bookmarkletHelp":
-    "이 링크를 북마크 바로 드래그하거나 아래 코드를 복사하세요:",
+    "또는 이 링크를 북마크 바로 드래그하거나 아래 코드를 복사하세요:",
   "settings.copy": "복사",
   "settings.searchChat": "검색 및 채팅",
   "settings.showSearchChat": "홈 페이지에 검색 및 채팅 버튼 표시",

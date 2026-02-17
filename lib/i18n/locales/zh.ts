@@ -83,9 +83,13 @@ const zh: Translations = {
 
   // Settings / Preferences
   "settings.title": "设置",
-  "settings.bookmarklet": "书签工具",
+  "settings.savingBookmarks": "保存书签",
+  "settings.extensionHelp": "安装浏览器扩展，最方便地保存书签：",
+  "settings.chromeExtension": "Chrome 扩展",
+  "settings.firefoxExtension": "Firefox 扩展",
+  "settings.bookmarkletSubheading": "书签工具",
   "settings.bookmarkletHelp":
-    "将此链接拖到书签栏，或复制以下代码：",
+    "或者，将此链接拖到书签栏，或复制以下代码：",
   "settings.copy": "复制",
   "settings.searchChat": "搜索和聊天",
   "settings.showSearchChat": "在首页显示搜索和聊天按钮",

@@ -83,9 +83,13 @@ const ja: Translations = {
 
   // Settings / Preferences
   "settings.title": "設定",
-  "settings.bookmarklet": "ブックマークレット",
+  "settings.savingBookmarks": "ブックマークの保存",
+  "settings.extensionHelp": "ブラウザ拡張機能をインストールすると、最も簡単にブックマークを保存できます：",
+  "settings.chromeExtension": "Chrome 拡張機能",
+  "settings.firefoxExtension": "Firefox 拡張機能",
+  "settings.bookmarkletSubheading": "ブックマークレット",
   "settings.bookmarkletHelp":
-    "このリンクをブックマークバーにドラッグするか、下のコードをコピーしてください：",
+    "または、このリンクをブックマークバーにドラッグするか、下のコードをコピーしてください：",
   "settings.copy": "コピー",
   "settings.searchChat": "検索とチャット",
   "settings.showSearchChat": "ホームページに検索とチャットボタンを表示",

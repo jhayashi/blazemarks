@@ -1,4 +1,4 @@
-export const READING_DOMAINS: Set<string> = new Set([
+const READING_DOMAINS: Set<string> = new Set([
   // ── English Newspapers ──
   "nytimes.com",
   "washingtonpost.com",
@@ -555,15 +555,6 @@ function matchesDomainSet(
     domain = domain.slice(domain.indexOf(".") + 1);
   }
   return false;
-}
-
-export function isNewsDomain(url: string | null): boolean {
-  if (!url) return false;
-  try {
-    return matchesDomainSet(url, READING_DOMAINS);
-  } catch {
-    return false;
-  }
 }
 
 export function isReadingDomain(

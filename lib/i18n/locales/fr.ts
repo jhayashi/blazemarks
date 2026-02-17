@@ -115,6 +115,9 @@ const fr: Translations = {
     "D\u00e9sactiver la synchronisation\u00a0? Les donn\u00e9es seront uniquement stock\u00e9es sur cet appareil. La page sera recharg\u00e9e.",
   "settings.syncConfirmEnable":
     "Activer la synchronisation\u00a0? Les donn\u00e9es seront synchronis\u00e9es entre les appareils. La page sera recharg\u00e9e.",
+  "settings.customReadingDomains": "Domaines de lecture personnalis\u00e9s",
+  "settings.customReadingDomainsHelp":
+    "Ajoutez des domaines \u00e0 marquer automatiquement pour le mode lecture. Un domaine par ligne.",
 
   // Import / Export
   "importExport.title": "Importer / Exporter",

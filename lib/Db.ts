@@ -54,6 +54,7 @@ const Schema = {
     theme: nullOr(EvoluString),
     pageTitle: nullOr(EvoluString),
     showSearchChat: nullOr(SqliteBoolean),
+    customReadingDomains: nullOr(EvoluString),
   },
 };
 

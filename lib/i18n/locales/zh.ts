@@ -114,6 +114,9 @@ const zh: Translations = {
     "禁用同步？数据将仅存储在此设备上。页面将重新加载。",
   "settings.syncConfirmEnable":
     "启用同步？数据将在设备间同步。页面将重新加载。",
+  "settings.customReadingDomains": "自定义阅读域名",
+  "settings.customReadingDomainsHelp":
+    "添加应自动标记为阅读模式的域名。每行一个域名。",
 
   // Import / Export
   "importExport.title": "导入 / 导出",

@@ -115,6 +115,9 @@ const de: Translations = {
     "Synchronisierung deaktivieren? Daten werden nur auf diesem Ger\u00e4t gespeichert. Die Seite wird neu geladen.",
   "settings.syncConfirmEnable":
     "Synchronisierung aktivieren? Daten werden zwischen Ger\u00e4ten synchronisiert. Die Seite wird neu geladen.",
+  "settings.customReadingDomains": "Benutzerdefinierte Lesedomains",
+  "settings.customReadingDomainsHelp":
+    "Domains hinzuf\u00fcgen, die automatisch f\u00fcr den Lesemodus markiert werden. Eine Domain pro Zeile.",
 
   // Import / Export
   "importExport.title": "Import / Export",

@@ -46,7 +46,11 @@ export function updateBookmark(
     ...(fields.favicon !== undefined
       ? { favicon: fields.favicon as Str }
       : {}),
-    ...(fields.isForReading ? { isForReading: sqliteTrue } : {}),
+    ...(fields.isForReading === true
+      ? { isForReading: sqliteTrue }
+      : fields.isForReading === false
+        ? { isForReading: null as SqliteBoolean | null }
+        : {}),
   });
 }
 
@@ -128,6 +132,7 @@ export function updateShowSearchChat(id: SettingsId, show: boolean) {
 export function createSettings(fields: {
   pageTitle?: string;
   showSearchChat?: boolean;
+  customReadingDomains?: string;
 }) {
   const data: Record<string, unknown> = {};
   if (fields.pageTitle) {
@@ -136,8 +141,18 @@ export function createSettings(fields: {
   if (fields.showSearchChat) {
     data["showSearchChat"] = sqliteTrue;
   }
+  if (fields.customReadingDomains) {
+    data["customReadingDomains"] = fields.customReadingDomains as Str;
+  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return getEvolu().insert("settings", data as any);
+}
+
+export function updateCustomReadingDomains(id: SettingsId, domains: string) {
+  getEvolu().update("settings", {
+    id,
+    customReadingDomains: (domains || null) as typeof EvoluString.Type | null,
+  });
 }
 
 export function deleteTag(

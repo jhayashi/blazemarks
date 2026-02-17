@@ -16,7 +16,11 @@ import type { Locale } from "../../lib/i18n/types";
 import { getEvolu } from "../../lib/Db";
 import { getSyncMode, setSyncMode, type SyncMode } from "../../lib/syncPreference";
 import { generateBookmarkletCode } from "../../lib/bookmarklet";
-import { createSettings, updateShowSearchChat } from "../../lib/mutations";
+import {
+  createSettings,
+  updateShowSearchChat,
+  updateCustomReadingDomains,
+} from "../../lib/mutations";
 import { getSettingsQuery } from "../../lib/queries";
 import type { SearchProviderId, ChatProviderId } from "../../lib/providers";
 import {
@@ -94,6 +98,32 @@ export default function Preferences() {
       void getEvolu().resetAppOwner();
     }
   }, [t]);
+
+  const customDomainsRaw = settingsRow?.customReadingDomains ?? "";
+  const customDomainsText = (() => {
+    try {
+      const parsed = JSON.parse(customDomainsRaw);
+      return Array.isArray(parsed) ? parsed.join("\n") : "";
+    } catch {
+      return "";
+    }
+  })();
+
+  const handleCustomDomainsChange = useCallback(
+    (value: string) => {
+      const domains = value
+        .split(/[\n,]/)
+        .map((d) => d.trim().toLowerCase())
+        .filter(Boolean);
+      const json = JSON.stringify(domains);
+      if (settingsRow) {
+        updateCustomReadingDomains(settingsRow.id, json);
+      } else {
+        createSettings({ customReadingDomains: json });
+      }
+    },
+    [settingsRow],
+  );
 
   const [bookmarkletCode, setBookmarkletCode] = useState("");
   const bookmarkletWrapperRef = useRef<HTMLDivElement>(null);
@@ -215,6 +245,22 @@ export default function Preferences() {
             </select>
           </label>
         </div>
+      </section>
+
+      <section {...props(styles.section)}>
+        <h2 {...props(styles.sectionTitle)}>
+          {t("settings.customReadingDomains")}
+        </h2>
+        <p {...props(styles.helpText)}>
+          {t("settings.customReadingDomainsHelp")}
+        </p>
+        <textarea
+          defaultValue={customDomainsText}
+          onBlur={(e) => handleCustomDomainsChange(e.target.value)}
+          placeholder={"example.com\nblog.example.org"}
+          rows={4}
+          {...props(styles.textarea)}
+        />
       </section>
 
       <section {...props(styles.section)}>
@@ -387,6 +433,24 @@ const styles = create({
     borderRadius: 6,
     cursor: "pointer",
     ":hover": {
+      borderColor: colors.accent,
+    },
+  },
+  textarea: {
+    width: "100%",
+    paddingBlock: spacing.xs,
+    paddingInline: spacing.s,
+    fontSize: fontSizes.step_1,
+    fontFamily: fonts.mono,
+    color: colors.primary,
+    backgroundColor: colors.hoverAndFocusBackground,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: colors.border,
+    borderRadius: 6,
+    outline: "none",
+    resize: "vertical",
+    ":focus": {
       borderColor: colors.accent,
     },
   },

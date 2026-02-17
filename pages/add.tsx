@@ -4,14 +4,15 @@ import { useRouter } from "next/router";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useT } from "../lib/i18n";
 import { createBookmark, updateBookmark } from "../lib/mutations";
-import { isNewsDomain } from "../lib/newsDomains";
-import { getAllBookmarksQuery } from "../lib/queries";
+import { isReadingDomain } from "../lib/newsDomains";
+import { getAllBookmarksQuery, getSettingsQuery } from "../lib/queries";
 import { colors, fonts, fontSizes, spacing } from "../lib/Tokens.stylex";
 
 function AddContent() {
   const t = useT();
   const router = useRouter();
   const bookmarks = useQuery(getAllBookmarksQuery());
+  const settings = useQuery(getSettingsQuery());
   const savedRef = useRef(false);
   const [status, setStatus] = useState<"saving" | "saved" | "updated" | "error">("saving");
   const [info, setInfo] = useState<{ title?: string; url?: string }>({});
@@ -31,7 +32,18 @@ function AddContent() {
     if (typeof title === "string") bookmarkInfo.title = title;
     setInfo(bookmarkInfo);
 
-    const shouldMarkForReading = readlater === "1" || isNewsDomain(url);
+    const settingsRow = settings.length > 0 ? settings[0] : undefined;
+    let customDomains: string[] = [];
+    if (settingsRow?.customReadingDomains) {
+      try {
+        customDomains = JSON.parse(settingsRow.customReadingDomains);
+      } catch {}
+    }
+
+    // readlater=1 → force on, readlater=0 → force off, absent → domain check
+    const shouldMarkForReading =
+      readlater === "1" ||
+      (readlater !== "0" && isReadingDomain(url, customDomains));
 
     // Dedup: update if URL already exists
     const existing = bookmarks.find((b) => b.url === url);
@@ -40,7 +52,7 @@ function AddContent() {
       if (typeof title === "string") fields.title = title;
       if (typeof description === "string") fields.description = description;
       if (typeof favicon === "string") fields.favicon = favicon;
-      if (shouldMarkForReading) fields.isForReading = true;
+      fields.isForReading = shouldMarkForReading;
       updateBookmark(existing.id, fields);
       setStatus("updated");
     } else {
@@ -57,13 +69,19 @@ function AddContent() {
       }
     }
 
+    // Broadcast custom domains to extension via URL hash
+    if (customDomains.length > 0) {
+      window.location.hash =
+        "customDomains=" + encodeURIComponent(JSON.stringify(customDomains));
+    }
+
     setTimeout(() => {
       // If opened by bookmarklet (window.open), close the tab.
       // Otherwise fall back to navigating home.
       window.close();
       void router.push("/");
     }, 1500);
-  }, [router, bookmarks]);
+  }, [router, bookmarks, settings]);
 
   return (
     <div {...props(styles.page)}>

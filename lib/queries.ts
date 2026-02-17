@@ -68,7 +68,7 @@ function _createSettingsQuery() {
   return getEvolu().createQuery((db) =>
     db
       .selectFrom("settings")
-      .select(["id", "pageTitle", "showSearchChat"])
+      .select(["id", "pageTitle", "showSearchChat", "customReadingDomains"])
       .where("isDeleted", "is not", sqliteTrue)
       .limit(1),
   );

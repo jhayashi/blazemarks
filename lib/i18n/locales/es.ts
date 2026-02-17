@@ -115,6 +115,9 @@ const es: Translations = {
     "\u00bfDesactivar sincronizaci\u00f3n? Los datos solo se almacenar\u00e1n en este dispositivo. La p\u00e1gina se recargar\u00e1.",
   "settings.syncConfirmEnable":
     "\u00bfActivar sincronizaci\u00f3n? Los datos se sincronizar\u00e1n entre dispositivos. La p\u00e1gina se recargar\u00e1.",
+  "settings.customReadingDomains": "Dominios de lectura personalizados",
+  "settings.customReadingDomainsHelp":
+    "A\u00f1ade dominios que se marcar\u00e1n autom\u00e1ticamente para modo lectura. Un dominio por l\u00ednea.",
 
   // Import / Export
   "importExport.title": "Importar / Exportar",

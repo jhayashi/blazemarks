@@ -1,4 +1,8 @@
-import { blazemarksUrl, newTabRedirect } from "@/utils/storage";
+import {
+  blazemarksUrl,
+  newTabRedirect,
+  customReadingDomains,
+} from "@/utils/storage";
 import { buildAddUrl } from "@/utils/blazemarks";
 
 const NEW_TAB_URLS = ["chrome://newtab/", "about:newtab", "about:home"];
@@ -117,4 +121,27 @@ export default defineBackground(() => {
   });
 
   startNewTabListener();
+
+  // --- Custom reading domains sync (via /add page URL hash) ---
+  async function startDomainSyncListener() {
+    const hasPermission = await browser.permissions.contains({
+      permissions: ["tabs"],
+    });
+    if (!hasPermission) return;
+
+    browser.tabs.onUpdated.addListener((_tabId, changeInfo) => {
+      if (!changeInfo.url) return;
+      const hashIdx = changeInfo.url.indexOf("#customDomains=");
+      if (hashIdx === -1) return;
+      const encoded = changeInfo.url.slice(hashIdx + "#customDomains=".length);
+      try {
+        const domains = JSON.parse(decodeURIComponent(encoded));
+        if (Array.isArray(domains)) {
+          customReadingDomains.setValue(domains);
+        }
+      } catch {}
+    });
+  }
+
+  startDomainSyncListener();
 });

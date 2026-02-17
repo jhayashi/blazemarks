@@ -14,6 +14,7 @@ export function buildAddUrl(
   if (params.title) searchParams.set("title", params.title);
   if (params.description) searchParams.set("description", params.description);
   if (params.favicon) searchParams.set("favicon", params.favicon);
-  if (params.readLater) searchParams.set("readlater", "1");
+  if (params.readLater === true) searchParams.set("readlater", "1");
+  else if (params.readLater === false) searchParams.set("readlater", "0");
   return `${base}/add?${searchParams.toString()}`;
 }

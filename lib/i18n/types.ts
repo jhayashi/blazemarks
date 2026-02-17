@@ -144,6 +144,8 @@ export interface Translations {
   "settings.syncHelp": string;
   "settings.syncConfirmDisable": string;
   "settings.syncConfirmEnable": string;
+  "settings.customReadingDomains": string;
+  "settings.customReadingDomainsHelp": string;
 
   // Import / Export
   "importExport.title": string;

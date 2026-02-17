@@ -114,6 +114,9 @@ const ar: Translations = {
     "تعطيل المزامنة؟ سيتم تخزين البيانات على هذا الجهاز فقط. سيتم إعادة تحميل الصفحة.",
   "settings.syncConfirmEnable":
     "تفعيل المزامنة؟ ستتم مزامنة البيانات بين الأجهزة. سيتم إعادة تحميل الصفحة.",
+  "settings.customReadingDomains": "نطاقات القراءة المخصصة",
+  "settings.customReadingDomainsHelp":
+    "أضف النطاقات التي يجب تمييزها تلقائيًا لوضع القراءة. نطاق واحد لكل سطر.",
 
   // Import / Export
   "importExport.title": "استيراد / تصدير",

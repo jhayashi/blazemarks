@@ -74,5 +74,9 @@
   "shortcutConfigure": {
     "message": "Configure",
     "description": "Button to open browser shortcut settings"
+  },
+  "addToReadingList": {
+    "message": "Add to reading list",
+    "description": "Checkbox label for reading list in popup"
   }
 }

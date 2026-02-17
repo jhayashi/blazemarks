@@ -114,6 +114,9 @@ const ja: Translations = {
     "同期を無効にしますか？データはこのデバイスにのみ保存されます。ページが再読み込みされます。",
   "settings.syncConfirmEnable":
     "同期を有効にしますか？データはデバイス間で同期されます。ページが再読み込みされます。",
+  "settings.customReadingDomains": "カスタム読書ドメイン",
+  "settings.customReadingDomainsHelp":
+    "読書モードに自動的にマークされるドメインを追加します。1行に1ドメイン。",
 
   // Import / Export
   "importExport.title": "インポート / エクスポート",

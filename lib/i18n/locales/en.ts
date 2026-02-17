@@ -114,6 +114,9 @@ const en: Translations = {
     "Disable sync? Data will only be stored on this device. The page will reload.",
   "settings.syncConfirmEnable":
     "Enable sync? Data will sync across devices. The page will reload.",
+  "settings.customReadingDomains": "Custom Reading Domains",
+  "settings.customReadingDomainsHelp":
+    "Add domains that should automatically be marked for reading mode. One domain per line.",
 
   // Import / Export
   "importExport.title": "Import / Export",

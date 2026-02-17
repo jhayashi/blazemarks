@@ -114,6 +114,9 @@ const ko: Translations = {
     "동기화를 비활성화하시겠습니까? 데이터가 이 기기에만 저장됩니다. 페이지가 새로고침됩니다.",
   "settings.syncConfirmEnable":
     "동기화를 활성화하시겠습니까? 데이터가 기기 간에 동기화됩니다. 페이지가 새로고침됩니다.",
+  "settings.customReadingDomains": "사용자 정의 읽기 도메인",
+  "settings.customReadingDomainsHelp":
+    "읽기 모드로 자동 표시할 도메인을 추가하세요. 한 줄에 하나의 도메인.",
 
   // Import / Export
   "importExport.title": "가져오기 / 내보내기",

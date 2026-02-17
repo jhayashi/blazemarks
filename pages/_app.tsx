@@ -110,7 +110,7 @@ export default function App({
             tagline="A free, fast, and powerful bookmark manager that puts you in control of your data."
             featuresDescription={
               <ul style={{ margin: 0, paddingInlineStart: "1.2em" }}>
-                <li>Super fast search across tens of thousands of bookmarks with optional sync.</li>
+                <li>Super fast search across thousands of bookmarks with optional sync.</li>
                 <li>Integrated web search &amp; AI chat make for a useful new tab page.</li>
                 <li>Reading list, import / export, theming, and optional AI tag help.</li>
               </ul>

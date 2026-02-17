@@ -28,7 +28,7 @@ export default defineConfig({
       },
     },
     commands: {
-      "save-bookmark": {
+      "_execute_browser_action": {
         suggested_key: { default: "Ctrl+Shift+8", mac: "Command+Shift+8" },
         description: "__MSG_commandSave__",
       },

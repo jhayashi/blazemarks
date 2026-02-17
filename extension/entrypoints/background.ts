@@ -1,11 +1,5 @@
-import {
-  blazemarksUrl,
-  newTabRedirect,
-  customReadingDomains,
-} from "@/utils/storage";
+import { blazemarksUrl, customReadingDomains } from "@/utils/storage";
 import { buildAddUrl } from "@/utils/blazemarks";
-
-const NEW_TAB_URLS = ["chrome://newtab/", "about:newtab", "about:home"];
 
 async function saveCurrentTab(readLater?: boolean) {
   const [tab] = await browser.tabs.query({
@@ -84,43 +78,7 @@ export default defineBackground(() => {
     }
   });
 
-  browser.commands.onCommand.addListener(async (command) => {
-    if (command !== "save-bookmark") return;
-    await saveCurrentTab();
-  });
-
-  // --- New tab redirect ---
-  async function onNewTab(tab: { id?: number; url?: string }) {
-    if (!tab.id || !tab.url || !NEW_TAB_URLS.includes(tab.url)) return;
-    const enabled = await newTabRedirect.getValue();
-    if (!enabled) return;
-    const url = await blazemarksUrl.getValue();
-    browser.tabs.update(tab.id, { url });
-  }
-
-  async function startNewTabListener() {
-    const hasPermission = await browser.permissions.contains({
-      permissions: ["tabs"],
-    });
-    const enabled = await newTabRedirect.getValue();
-    if (hasPermission && enabled) {
-      browser.tabs.onCreated.addListener(onNewTab);
-    }
-  }
-
-  // Re-evaluate whenever the setting changes
-  newTabRedirect.watch((enabled) => {
-    browser.tabs.onCreated.removeListener(onNewTab);
-    if (enabled) {
-      browser.permissions
-        .contains({ permissions: ["tabs"] })
-        .then((has) => {
-          if (has) browser.tabs.onCreated.addListener(onNewTab);
-        });
-    }
-  });
-
-  startNewTabListener();
+  // Keyboard shortcut uses _execute_browser_action to open the popup natively
 
   // --- Custom reading domains sync (via /add page URL hash) ---
   async function startDomainSyncListener() {

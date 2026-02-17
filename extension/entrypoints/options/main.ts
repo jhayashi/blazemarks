@@ -6,7 +6,6 @@ const instanceUrlInput = document.getElementById(
 const newtabToggle = document.getElementById(
   "newtab-toggle",
 ) as HTMLInputElement;
-const permissionDenied = document.getElementById("permission-denied")!;
 const shortcutValue = document.getElementById("shortcut-value")!;
 const shortcutConfigure = document.getElementById("shortcut-configure")!;
 const shortcutWarning = document.getElementById("shortcut-warning")!;
@@ -31,29 +30,14 @@ async function loadNewTabToggle() {
 }
 
 newtabToggle.addEventListener("change", async () => {
-  permissionDenied.classList.add("hidden");
-
-  if (newtabToggle.checked) {
-    // Request tabs permission if not already granted
-    const granted = await browser.permissions.request({
-      permissions: ["tabs"],
-    });
-    if (!granted) {
-      newtabToggle.checked = false;
-      permissionDenied.classList.remove("hidden");
-      return;
-    }
-    await newTabRedirect.setValue(true);
-  } else {
-    await newTabRedirect.setValue(false);
-  }
+  await newTabRedirect.setValue(newtabToggle.checked);
 });
 
 // --- Keyboard shortcut ---
 
 async function loadShortcut() {
   const commands = await browser.commands.getAll();
-  const saveCmd = commands.find((c) => c.name === "save-bookmark");
+  const saveCmd = commands.find((c) => c.name === "_execute_browser_action");
   if (saveCmd?.shortcut) {
     shortcutValue.textContent = saveCmd.shortcut;
     shortcutWarning.classList.add("hidden");

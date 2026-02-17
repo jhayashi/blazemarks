@@ -140,7 +140,7 @@ const faqs: FaqItem[] = [
   {
     question: "Which browsers does the extension support?",
     answer:
-      "The BlazeMarks extension supports Chrome, Edge, Brave, and other Chromium-based browsers (using Manifest V3), as well as Firefox (using Manifest V2). Safari support requires building on macOS with Xcode.",
+      "The BlazeMarks extension supports Chrome, Edge, Brave, and other Chromium-based browsers (using Manifest V3), as well as Firefox (using Manifest V2).",
   },
   {
     question: "What is the bookmarklet and how do I use it?",

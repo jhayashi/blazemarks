@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "ローカルファーストのBlazemarksにブックマークを保存" },
+  "extDescription": { "message": "無料で高速、強力なブックマークマネージャー。データの管理はあなた自身の手に。" },
   "saveToBlaze": { "message": "Blazemarksに保存" },
   "readLater": { "message": "Blazemarksで後で読む" },
   "commandSave": { "message": "現在のページをブックマークに保存" },

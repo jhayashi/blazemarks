@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "로컬 우선 Blazemarks 인스턴스에 북마크 저장" },
+  "extDescription": { "message": "무료이고 빠르며 강력한 북마크 관리자. 데이터를 직접 관리하세요." },
   "saveToBlaze": { "message": "Blazemarks에 저장" },
   "readLater": { "message": "Blazemarks에서 나중에 읽기" },
   "commandSave": { "message": "현재 페이지를 북마크로 저장" },

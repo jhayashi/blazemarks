@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "Lesezeichen in Ihrer lokalen Blazemarks-Instanz speichern" },
+  "extDescription": { "message": "Ein kostenloser, schneller und leistungsstarker Lesezeichen-Manager, der Ihnen die Kontrolle über Ihre Daten gibt." },
   "saveToBlaze": { "message": "In Blazemarks speichern" },
   "readLater": { "message": "Später in Blazemarks lesen" },
   "commandSave": { "message": "Aktuelle Seite als Lesezeichen speichern" },

@@ -4,7 +4,7 @@
     "description": "Extension name"
   },
   "extDescription": {
-    "message": "Save bookmarks to your local-first Blazemarks instance",
+    "message": "A free, fast, and powerful bookmark manager that puts you in control of your data.",
     "description": "Extension description"
   },
   "saveToBlaze": {

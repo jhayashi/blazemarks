@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "将书签保存到本地优先的Blazemarks实例" },
+  "extDescription": { "message": "一个免费、快速且强大的书签管理器，让您完全掌控自己的数据。" },
   "saveToBlaze": { "message": "保存到Blazemarks" },
   "readLater": { "message": "稍后在Blazemarks中阅读" },
   "commandSave": { "message": "将当前页面保存为书签" },

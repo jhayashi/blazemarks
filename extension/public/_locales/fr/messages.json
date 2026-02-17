@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "Enregistrez des marque-pages dans votre instance locale Blazemarks" },
+  "extDescription": { "message": "Un gestionnaire de marque-pages gratuit, rapide et puissant qui vous donne le contrôle de vos données." },
   "saveToBlaze": { "message": "Enregistrer dans Blazemarks" },
   "readLater": { "message": "Lire plus tard dans Blazemarks" },
   "commandSave": { "message": "Enregistrer la page actuelle comme marque-page" },

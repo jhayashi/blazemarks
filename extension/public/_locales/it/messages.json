@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "Salva i segnalibri nella tua istanza locale di Blazemarks" },
+  "extDescription": { "message": "Un gestore di segnalibri gratuito, veloce e potente che ti dà il controllo dei tuoi dati." },
   "saveToBlaze": { "message": "Salva in Blazemarks" },
   "readLater": { "message": "Leggi dopo in Blazemarks" },
   "commandSave": { "message": "Salva la pagina corrente come segnalibro" },

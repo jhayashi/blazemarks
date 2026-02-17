@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Blazemarks" },
-  "extDescription": { "message": "Guarda marcadores en tu instancia local de Blazemarks" },
+  "extDescription": { "message": "Un gestor de marcadores gratuito, rápido y potente que te da el control de tus datos." },
   "saveToBlaze": { "message": "Guardar en Blazemarks" },
   "readLater": { "message": "Leer más tarde en Blazemarks" },
   "commandSave": { "message": "Guardar página actual como marcador" },

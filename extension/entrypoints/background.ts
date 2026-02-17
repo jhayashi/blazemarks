@@ -1,4 +1,8 @@
-import { blazemarksUrl, customReadingDomains } from "@/utils/storage";
+import {
+  blazemarksUrl,
+  customReadingDomains,
+  newTabRedirect,
+} from "@/utils/storage";
 import { buildAddUrl } from "@/utils/blazemarks";
 
 async function saveCurrentTab(readLater?: boolean) {
@@ -102,4 +106,39 @@ export default defineBackground(() => {
   }
 
   startDomainSyncListener();
+
+  // --- New tab redirect (Chrome only) ---
+  // Firefox uses the newtab entrypoint via chrome_url_overrides instead.
+  const isFirefox = typeof browser.tabs.toggleReaderMode === "function";
+  if (!isFirefox) {
+    const NEW_TAB_URLS = ["chrome://newtab/", "chrome://new-tab-page/"];
+
+    let listenerAttached = false;
+
+    function onNewTab(tab: browser.Tabs.Tab) {
+      const tabUrl = tab.url || tab.pendingUrl;
+      if (!tab.id || !tabUrl || !NEW_TAB_URLS.includes(tabUrl)) return;
+      blazemarksUrl.getValue().then((url) => {
+        browser.tabs.update(tab.id!, { url });
+      });
+    }
+
+    async function startNewTabListener() {
+      const enabled = await newTabRedirect.getValue();
+      const hasPermission = await browser.permissions.contains({
+        permissions: ["tabs"],
+      });
+
+      if (enabled && hasPermission && !listenerAttached) {
+        browser.tabs.onCreated.addListener(onNewTab);
+        listenerAttached = true;
+      } else if ((!enabled || !hasPermission) && listenerAttached) {
+        browser.tabs.onCreated.removeListener(onNewTab);
+        listenerAttached = false;
+      }
+    }
+
+    startNewTabListener();
+    newTabRedirect.watch(() => startNewTabListener());
+  }
 });

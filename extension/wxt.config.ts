@@ -28,7 +28,9 @@ export default defineConfig({
       },
     },
     commands: {
-      "_execute_browser_action": {
+      [browser === "firefox"
+        ? "_execute_browser_action"
+        : "_execute_action"]: {
         suggested_key: { default: "Ctrl+Shift+8", mac: "Command+Shift+8" },
         description: "__MSG_commandSave__",
       },

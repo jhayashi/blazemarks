@@ -29,7 +29,21 @@ async function loadNewTabToggle() {
   newtabToggle.checked = await newTabRedirect.getValue();
 }
 
+const isFirefoxBrowser =
+  navigator.userAgent.includes("Firefox") ||
+  typeof (browser.runtime as any).getBrowserInfo === "function";
+
 newtabToggle.addEventListener("change", async () => {
+  if (newtabToggle.checked && !isFirefoxBrowser) {
+    // Chrome: tabs is an optional permission — request it before enabling
+    const granted = await browser.permissions.request({
+      permissions: ["tabs"],
+    });
+    if (!granted) {
+      newtabToggle.checked = false;
+      return;
+    }
+  }
   await newTabRedirect.setValue(newtabToggle.checked);
 });
 
@@ -37,7 +51,10 @@ newtabToggle.addEventListener("change", async () => {
 
 async function loadShortcut() {
   const commands = await browser.commands.getAll();
-  const saveCmd = commands.find((c) => c.name === "_execute_browser_action");
+  const saveCmd = commands.find(
+    (c) =>
+      c.name === "_execute_action" || c.name === "_execute_browser_action",
+  );
   if (saveCmd?.shortcut) {
     shortcutValue.textContent = saveCmd.shortcut;
     shortcutWarning.classList.add("hidden");

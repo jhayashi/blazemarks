@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useT } from "../lib/i18n";
 import { createBookmark, updateBookmark } from "../lib/mutations";
+import { getGoogleFaviconUrl } from "../lib/favicon";
 import { isReadingDomain } from "../lib/newsDomains";
 import { getAllBookmarksQuery, getSettingsQuery } from "../lib/queries";
 import { colors, fonts, fontSizes, spacing } from "../lib/Tokens.stylex";
@@ -45,13 +46,16 @@ function AddContent() {
       readlater === "1" ||
       (readlater !== "0" && isReadingDomain(url, customDomains));
 
+    const resolvedFavicon =
+      typeof favicon === "string" ? favicon : getGoogleFaviconUrl(url) ?? undefined;
+
     // Dedup: update if URL already exists
     const existing = bookmarks.find((b) => b.url === url);
     if (existing) {
       const fields: Parameters<typeof updateBookmark>[1] = {};
       if (typeof title === "string") fields.title = title;
       if (typeof description === "string") fields.description = description;
-      if (typeof favicon === "string") fields.favicon = favicon;
+      if (resolvedFavicon) fields.favicon = resolvedFavicon;
       fields.isForReading = shouldMarkForReading;
       updateBookmark(existing.id, fields);
       setStatus("updated");
@@ -59,7 +63,7 @@ function AddContent() {
       const fields: Parameters<typeof createBookmark>[0] = { url };
       if (typeof title === "string") fields.title = title;
       if (typeof description === "string") fields.description = description;
-      if (typeof favicon === "string") fields.favicon = favicon;
+      if (resolvedFavicon) fields.favicon = resolvedFavicon;
       if (shouldMarkForReading) fields.isForReading = true;
       const result = createBookmark(fields);
       if (result.ok) {

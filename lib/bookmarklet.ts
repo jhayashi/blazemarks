@@ -10,8 +10,9 @@ export function generateBookmarkletCode(baseUrl: string): string {
     `var m=document.querySelector('meta[name="description"]');`,
     `var d=encodeURIComponent((window.getSelection&&window.getSelection().toString())||(m&&m.getAttribute('content'))||'');`,
     `var l=document.querySelector('link[rel*="icon"]');`,
-    `var f=encodeURIComponent((l&&l.href)||(location.origin+'/favicon.ico'));`,
-    `window.open('${base}/add?url='+u+'&title='+t+'&description='+d+'&favicon='+f);`,
+    `var h=(l&&l.href)||'';`,
+    `var f=h.indexOf('data:')===0?'':encodeURIComponent(h||location.origin+'/favicon.ico');`,
+    `window.open('${base}/add?url='+u+'&title='+t+'&description='+d+(f?'&favicon='+f:''));`,
     `}())`,
   ];
 

@@ -29,7 +29,6 @@
     "elf-components": "file:./elf-components"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.8",
     "@stylexjs/babel-plugin": "^0.17.5",
     "@stylexjs/eslint-plugin": "^0.17.5",
     "@stylexjs/postcss-plugin": "^0.17.5",

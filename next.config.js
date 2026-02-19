@@ -10,6 +10,7 @@ const withPWA = require("next-pwa")({
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
   transpilePackages: ["react-native-web", "elf-components"],
   webpack: (config) => {

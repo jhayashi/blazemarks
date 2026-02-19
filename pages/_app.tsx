@@ -68,7 +68,9 @@ export default function App({
           if (err) {
             unsub();
             reject(
-              new Error(`Database initialization failed: ${String(err)}`),
+              new Error(
+                `Database initialization failed: ${JSON.stringify(err)}`,
+              ),
             );
           }
         });

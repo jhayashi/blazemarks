@@ -59,7 +59,30 @@ export default function App({
     localStorage.setItem("blazemarks-setup", "true");
     setSyncMode("enabled");
     const e = initEvolu();
-    const owner = await e.appOwner;
+
+    const owner = await Promise.race([
+      e.appOwner,
+      new Promise<never>((_, reject) => {
+        const unsub = e.subscribeError(() => {
+          const err = e.getError();
+          if (err) {
+            unsub();
+            reject(
+              new Error(`Database initialization failed: ${String(err)}`),
+            );
+          }
+        });
+        setTimeout(() => {
+          unsub();
+          reject(
+            new Error(
+              "Database initialization timed out. Your browser may not support the required storage features. Try a non-private window or a different browser.",
+            ),
+          );
+        }, 15_000);
+      }),
+    ]);
+
     return owner.mnemonic as string;
   }, []);
 

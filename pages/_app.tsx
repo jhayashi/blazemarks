@@ -42,6 +42,7 @@ export default function App({
   const [setupComplete, setSetupComplete] = useState<boolean | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [evolu, setEvolu] = useState<Evolu<any> | null>(null);
+  const [storageSupported, setStorageSupported] = useState<boolean | null>(null);
 
   useEffect(() => {
     return themeManager.applySelected();
@@ -52,6 +53,15 @@ export default function App({
     setSetupComplete(done);
     if (done) {
       setEvolu(initEvolu());
+    }
+    // Check OPFS availability (required by Evolu's SQLite backend)
+    if (navigator.storage?.getDirectory) {
+      navigator.storage.getDirectory().then(
+        () => setStorageSupported(true),
+        () => setStorageSupported(false),
+      );
+    } else {
+      setStorageSupported(false);
     }
   }, []);
 
@@ -128,8 +138,26 @@ export default function App({
             </div>
           </LocaleProvider>
         </EvoluProvider>
+      ) : setupComplete === false && storageSupported === false ? (
+        <div {...props(styles.unsupportedOverlay)}>
+          <div {...props(styles.unsupportedDialog)}>
+            <h2 {...props(styles.unsupportedHeading)}>
+              Browser Not Supported
+            </h2>
+            <p {...props(styles.unsupportedBody)}>
+              BlazeMarks requires storage features (OPFS) that are not available
+              in this browser environment. This commonly happens in{" "}
+              <strong>Firefox Private Browsing</strong> mode.
+            </p>
+            <p {...props(styles.unsupportedBody)}>To use BlazeMarks, try:</p>
+            <ul {...props(styles.unsupportedList)}>
+              <li>Opening this page in a <strong>regular</strong> (non-private) browser window</li>
+              <li>Using Chrome, Edge, or another Chromium-based browser</li>
+            </ul>
+          </div>
+        </div>
       ) : (
-        setupComplete === false && (
+        setupComplete === false && storageSupported && (
           <SetupWizard
             appName="BlazeMarks"
             tagline="A free, fast, and powerful bookmark manager that puts you in control of your data."
@@ -172,5 +200,46 @@ const styles = create({
     display: "flex",
     flexDirection: "column",
     backgroundColor: colors.background,
+  },
+  unsupportedOverlay: {
+    position: "fixed",
+    inset: 0,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    padding: "1rem",
+  },
+  unsupportedDialog: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.75rem",
+    maxWidth: "28rem",
+    width: "100%",
+    padding: "2rem",
+    backgroundColor: colors.background,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: colors.border,
+    borderRadius: 12,
+  },
+  unsupportedHeading: {
+    fontSize: "1.25rem",
+    color: colors.primary,
+    fontWeight: 700,
+    margin: 0,
+  },
+  unsupportedBody: {
+    fontSize: "0.95rem",
+    color: colors.secondary,
+    lineHeight: 1.5,
+    margin: 0,
+  },
+  unsupportedList: {
+    fontSize: "0.95rem",
+    color: colors.secondary,
+    lineHeight: 1.7,
+    margin: 0,
+    paddingInlineStart: "1.2em",
   },
 });

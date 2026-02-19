@@ -142,18 +142,16 @@ export default function App({
         <div {...props(styles.unsupportedOverlay)}>
           <div {...props(styles.unsupportedDialog)}>
             <h2 {...props(styles.unsupportedHeading)}>
-              Browser Not Supported
+              Private Browsing Not Supported
             </h2>
             <p {...props(styles.unsupportedBody)}>
-              BlazeMarks requires storage features (OPFS) that are not available
-              in this browser environment. This commonly happens in{" "}
-              <strong>Firefox Private Browsing</strong> mode.
+              BlazeMarks needs to store data on your device, but
+              Firefox&apos;s private browsing mode prevents this.
             </p>
-            <p {...props(styles.unsupportedBody)}>To use BlazeMarks, try:</p>
-            <ul {...props(styles.unsupportedList)}>
-              <li>Opening this page in a <strong>regular</strong> (non-private) browser window</li>
-              <li>Using Chrome, Edge, or another Chromium-based browser</li>
-            </ul>
+            <p {...props(styles.unsupportedBody)}>
+              To get started, open this page in a{" "}
+              <strong>regular</strong> (non-private) browser window.
+            </p>
           </div>
         </div>
       ) : (
@@ -234,12 +232,5 @@ const styles = create({
     color: colors.secondary,
     lineHeight: 1.5,
     margin: 0,
-  },
-  unsupportedList: {
-    fontSize: "0.95rem",
-    color: colors.secondary,
-    lineHeight: 1.7,
-    margin: 0,
-    paddingInlineStart: "1.2em",
   },
 });

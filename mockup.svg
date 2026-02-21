@@ -1,0 +1,264 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="860" viewBox="0 0 420 860">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
+      text { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    </style>
+    <filter id="shadow1" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.08" flood-color="#000"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="420" height="860" fill="#ffffff" rx="16"/>
+
+  <!-- ========== HEADER ========== -->
+  <text x="24" y="52" font-size="22" font-weight="600" fill="#1d1d1f">My Bookmarks</text>
+  <!-- Hamburger menu icon -->
+  <g transform="translate(376, 36)">
+    <rect x="0" y="0" width="20" height="2.5" rx="1" fill="#1d1d1f"/>
+    <rect x="0" y="6" width="20" height="2.5" rx="1" fill="#1d1d1f"/>
+    <rect x="0" y="12" width="20" height="2.5" rx="1" fill="#1d1d1f"/>
+  </g>
+
+  <!-- ========== STARRED SHORTCUTS (4-col grid) ========== -->
+  <!-- Tile 1 -->
+  <rect x="24" y="76" width="87" height="38" rx="8" fill="#f5f5f7"/>
+  <circle cx="40" cy="95" r="6" fill="#e0e0e0"/>
+  <rect cx="40" cy="91" x="34" y="89" width="12" height="12" rx="2" fill="#4285f4" opacity="0.3"/>
+  <text x="52" y="99" font-size="11" fill="#0066cc">GitHub</text>
+
+  <!-- Tile 2 -->
+  <rect x="119" y="76" width="87" height="38" rx="8" fill="#f5f5f7"/>
+  <rect x="129" y="89" width="12" height="12" rx="2" fill="#ea4335" opacity="0.4"/>
+  <text x="147" y="99" font-size="11" fill="#0066cc">Gmail</text>
+
+  <!-- Tile 3 -->
+  <rect x="214" y="76" width="87" height="38" rx="8" fill="#f5f5f7"/>
+  <rect x="224" y="89" width="12" height="12" rx="2" fill="#ff6d00" opacity="0.4"/>
+  <text x="242" y="99" font-size="11" fill="#0066cc">HN</text>
+
+  <!-- Tile 4 -->
+  <rect x="309" y="76" width="87" height="38" rx="8" fill="#f5f5f7"/>
+  <rect x="319" y="89" width="12" height="12" rx="2" fill="#1da1f2" opacity="0.4"/>
+  <text x="337" y="99" font-size="11" fill="#0066cc">Twitter</text>
+
+  <!-- ========== SEARCH BAR ========== -->
+  <rect x="24" y="132" width="372" height="40" rx="8" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="1"/>
+  <text x="40" y="157" font-size="14" fill="#6e6e73">Search bookmarks or #tags...</text>
+
+  <!-- ========== FILTER BAR ========== -->
+  <g transform="translate(24, 188)">
+    <!-- Active: Date Added -->
+    <rect x="0" y="0" width="90" height="28" rx="6" fill="#e3f2fd"/>
+    <text x="12" y="18" font-size="11" font-weight="500" fill="#0066cc">Date Added</text>
+
+    <!-- Inactive: Last Visited -->
+    <rect x="98" y="0" width="90" height="28" rx="6" fill="transparent" stroke="#d1d1d6" stroke-width="1"/>
+    <text x="108" y="18" font-size="11" fill="#6e6e73">Last Visited</text>
+
+    <!-- Inactive: Visit Count -->
+    <rect x="196" y="0" width="90" height="28" rx="6" fill="transparent" stroke="#d1d1d6" stroke-width="1"/>
+    <text x="207" y="18" font-size="11" fill="#6e6e73">Visit Count</text>
+
+    <!-- Sort direction arrow -->
+    <text x="300" y="19" font-size="14" fill="#6e6e73">&#x2193;</text>
+  </g>
+
+  <!-- ========== BOOKMARK LIST ========== -->
+
+  <!-- Bookmark 1 -->
+  <g transform="translate(24, 232)">
+    <line x1="0" y1="62" x2="372" y2="62" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#24292e"/>
+    <text x="4" y="20" font-size="9" fill="white" font-weight="600">G</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">Building a Local-First App with CRDTs</text>
+    <!-- Site name -->
+    <text x="310" y="21" font-size="10" fill="#c7c7cc">github</text>
+    <!-- Star (filled/green) -->
+    <text x="350" y="22" font-size="14" fill="#388e3c">&#x2605;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Second line: description + tags -->
+    <text x="24" y="42" font-size="11" fill="#6e6e73">A comprehensive guide to building offline...</text>
+    <!-- Tag chips -->
+    <rect x="24" y="48" width="42" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="31" y="60" font-size="9" fill="#0066cc">#dev</text>
+    <rect x="72" y="48" width="52" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="79" y="60" font-size="9" fill="#0066cc">#crdt</text>
+    <!-- Visit count -->
+    <text x="330" y="60" font-size="10" fill="#f57c00">12 visits</text>
+  </g>
+
+  <!-- Bookmark 2 -->
+  <g transform="translate(24, 306)">
+    <line x1="0" y1="62" x2="372" y2="62" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#ff6600"/>
+    <text x="3" y="20" font-size="9" fill="white" font-weight="600">Y</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">Show HN: BlazeMarks - Local-First Bookmarks</text>
+    <!-- Site name -->
+    <text x="323" y="21" font-size="10" fill="#c7c7cc">ycomb...</text>
+    <!-- Star (unfilled) -->
+    <text x="350" y="22" font-size="14" fill="#6e6e73">&#x2606;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Tags -->
+    <rect x="24" y="30" width="55" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="31" y="42" font-size="9" fill="#0066cc">#news</text>
+    <rect x="85" y="30" width="68" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="92" y="42" font-size="9" fill="#0066cc">#startup</text>
+    <!-- Visit count -->
+    <text x="340" y="42" font-size="10" fill="#f57c00">5 visits</text>
+  </g>
+
+  <!-- Bookmark 3 -->
+  <g transform="translate(24, 380)">
+    <line x1="0" y1="52" x2="372" y2="52" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#1da1f2"/>
+    <text x="3" y="20" font-size="10" fill="white" font-weight="600">t</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">TypeScript 6.0 Release Notes</text>
+    <!-- Site name -->
+    <text x="290" y="21" font-size="10" fill="#c7c7cc">typescriptlang</text>
+    <!-- Star (filled/green) -->
+    <text x="350" y="22" font-size="14" fill="#388e3c">&#x2605;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Tags -->
+    <rect x="24" y="30" width="42" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="31" y="42" font-size="9" fill="#0066cc">#dev</text>
+    <rect x="72" y="30" width="80" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="79" y="42" font-size="9" fill="#0066cc">#typescript</text>
+  </g>
+
+  <!-- Bookmark 4 -->
+  <g transform="translate(24, 444)">
+    <line x1="0" y1="52" x2="372" y2="52" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#e53935"/>
+    <text x="3" y="20" font-size="9" fill="white" font-weight="600">R</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">React Server Components Deep Dive</text>
+    <!-- Site name -->
+    <text x="322" y="21" font-size="10" fill="#c7c7cc">react.dev</text>
+    <!-- Star (unfilled) -->
+    <text x="350" y="22" font-size="14" fill="#6e6e73">&#x2606;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Description -->
+    <text x="24" y="42" font-size="11" fill="#6e6e73">An in-depth look at how RSCs work under the hood</text>
+  </g>
+
+  <!-- Bookmark 5 -->
+  <g transform="translate(24, 508)">
+    <line x1="0" y1="52" x2="372" y2="52" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#5865f2"/>
+    <text x="3" y="20" font-size="9" fill="white" font-weight="600">D</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">Evolu Documentation - Local-First Framework</text>
+    <!-- Site name -->
+    <text x="330" y="21" font-size="10" fill="#c7c7cc">evolu</text>
+    <!-- Star (unfilled) -->
+    <text x="350" y="22" font-size="14" fill="#6e6e73">&#x2606;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Tags -->
+    <rect x="24" y="30" width="42" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="31" y="42" font-size="9" fill="#0066cc">#dev</text>
+    <rect x="72" y="30" width="55" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="79" y="42" font-size="9" fill="#0066cc">#docs</text>
+    <!-- Visit count -->
+    <text x="340" y="42" font-size="10" fill="#f57c00">8 visits</text>
+  </g>
+
+  <!-- Bookmark 6 -->
+  <g transform="translate(24, 572)">
+    <line x1="0" y1="42" x2="372" y2="42" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#0a66c2"/>
+    <text x="4" y="20" font-size="9" fill="white" font-weight="600">in</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">The Future of Web Development in 2026</text>
+    <!-- Site name -->
+    <text x="318" y="21" font-size="10" fill="#c7c7cc">medium</text>
+    <!-- Star (unfilled) -->
+    <text x="350" y="22" font-size="14" fill="#6e6e73">&#x2606;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Tags -->
+    <rect x="24" y="28" width="60" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="31" y="40" font-size="9" fill="#0066cc">#article</text>
+  </g>
+
+  <!-- Bookmark 7 -->
+  <g transform="translate(24, 626)">
+    <line x1="0" y1="42" x2="372" y2="42" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#f48024"/>
+    <text x="3" y="20" font-size="9" fill="white" font-weight="600">S</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">How to implement CRDT sync in SQLite</text>
+    <!-- Site name -->
+    <text x="300" y="21" font-size="10" fill="#c7c7cc">stackoverflow</text>
+    <!-- Star (unfilled) -->
+    <text x="350" y="22" font-size="14" fill="#6e6e73">&#x2606;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Visit count -->
+    <text x="330" y="38" font-size="10" fill="#f57c00">3 visits</text>
+  </g>
+
+  <!-- Bookmark 8 (partially visible to suggest scrolling) -->
+  <g transform="translate(24, 680)">
+    <line x1="0" y1="42" x2="372" y2="42" stroke="#c7c7cc" stroke-width="0.5"/>
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#333"/>
+    <text x="4" y="20" font-size="9" fill="white" font-weight="600">V</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">Vite 7 Migration Guide</text>
+    <!-- Site name -->
+    <text x="322" y="21" font-size="10" fill="#c7c7cc">vite.dev</text>
+    <!-- Star (unfilled) -->
+    <text x="350" y="22" font-size="14" fill="#6e6e73">&#x2606;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+    <!-- Tags -->
+    <rect x="24" y="28" width="42" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="31" y="40" font-size="9" fill="#0066cc">#dev</text>
+    <rect x="72" y="28" width="55" height="18" rx="9" fill="#f5f5f7" stroke="#d1d1d6" stroke-width="0.5"/>
+    <text x="79" y="40" font-size="9" fill="#0066cc">#tools</text>
+  </g>
+
+  <!-- Bookmark 9 (partially fading to suggest more content) -->
+  <g transform="translate(24, 734)" opacity="0.7">
+    <!-- Favicon -->
+    <rect x="0" y="8" width="16" height="16" rx="2" fill="#00897b"/>
+    <text x="3" y="20" font-size="9" fill="white" font-weight="600">N</text>
+    <!-- Title -->
+    <text x="24" y="21" font-size="13" font-weight="500" fill="#1d1d1f">Next.js 16 App Router Patterns</text>
+    <!-- Site name -->
+    <text x="318" y="21" font-size="10" fill="#c7c7cc">nextjs</text>
+    <!-- Star -->
+    <text x="350" y="22" font-size="14" fill="#388e3c">&#x2605;</text>
+    <!-- Delete -->
+    <text x="372" y="21" font-size="13" fill="#6e6e73">&#x00D7;</text>
+  </g>
+
+  <!-- Fade overlay to suggest scrollable content -->
+  <defs>
+    <linearGradient id="fadeOut" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="770" width="420" height="90" fill="url(#fadeOut)" rx="0"/>
+
+  <!-- App name label at bottom -->
+  <text x="210" y="840" font-size="11" fill="#c7c7cc" text-anchor="middle" font-weight="500" letter-spacing="1.5">BLAZEMARKS</text>
+</svg>

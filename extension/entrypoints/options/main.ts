@@ -1,10 +1,13 @@
-import { blazemarksUrl, newTabRedirect } from "@/utils/storage";
+import { blazemarksUrl, focusSearch, newTabRedirect } from "@/utils/storage";
 
 const instanceUrlInput = document.getElementById(
   "instance-url",
 ) as HTMLInputElement;
 const newtabToggle = document.getElementById(
   "newtab-toggle",
+) as HTMLInputElement;
+const focusSearchToggle = document.getElementById(
+  "focus-search-toggle",
 ) as HTMLInputElement;
 const shortcutValue = document.getElementById("shortcut-value")!;
 const shortcutConfigure = document.getElementById("shortcut-configure")!;
@@ -45,6 +48,16 @@ newtabToggle.addEventListener("change", async () => {
     }
   }
   await newTabRedirect.setValue(newtabToggle.checked);
+});
+
+// --- Focus search on new tab ---
+
+async function loadFocusSearchToggle() {
+  focusSearchToggle.checked = await focusSearch.getValue();
+}
+
+focusSearchToggle.addEventListener("change", async () => {
+  await focusSearch.setValue(focusSearchToggle.checked);
 });
 
 // --- Keyboard shortcut ---
@@ -93,6 +106,8 @@ function localize() {
   setText("newtab-label", "newTabLabel");
   setText("newtab-description", "newTabDescription");
   setText("permission-denied", "permissionDenied");
+  setText("focus-search-label", "focusSearchLabel");
+  setText("focus-search-description", "focusSearchDescription");
   setText("shortcut-label", "shortcutLabel");
   setText("shortcut-description", "shortcutDescription");
   setText("shortcut-warning", "shortcutWarning");
@@ -105,4 +120,5 @@ function localize() {
 localize();
 loadUrl();
 loadNewTabToggle();
+loadFocusSearchToggle();
 loadShortcut();

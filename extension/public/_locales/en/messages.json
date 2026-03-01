@@ -75,6 +75,14 @@
     "message": "Configure",
     "description": "Button to open browser shortcut settings"
   },
+  "focusSearchLabel": {
+    "message": "Focus search on new tab",
+    "description": "Label for focus search toggle"
+  },
+  "focusSearchDescription": {
+    "message": "Automatically focus the search box when opening a new tab.",
+    "description": "Description for focus search setting"
+  },
   "addToReadingList": {
     "message": "Add to reading list",
     "description": "Checkbox label for reading list in popup"

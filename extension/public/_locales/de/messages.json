@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "Aktuelle Seite als Lesezeichen speichern." },
   "shortcutWarning": { "message": "Keine Tastenkombination zugewiesen. Sie wurde möglicherweise wegen eines Konflikts entfernt. Klicken Sie auf \"Konfigurieren\"." },
   "shortcutConfigure": { "message": "Konfigurieren" },
+  "focusSearchLabel": { "message": "Suche in neuem Tab fokussieren" },
+  "focusSearchDescription": { "message": "Suchfeld beim Öffnen eines neuen Tabs automatisch fokussieren." },
   "addToReadingList": { "message": "Zur Leseliste hinzufügen" }
 }

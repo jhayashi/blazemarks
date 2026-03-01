@@ -8,6 +8,11 @@ export const newTabRedirect = storage.defineItem<boolean>(
   { fallback: false },
 );
 
+export const focusSearch = storage.defineItem<boolean>(
+  "local:focusSearch",
+  { fallback: false },
+);
+
 export const customReadingDomains = storage.defineItem<string[]>(
   "local:customReadingDomains",
   { fallback: [] },

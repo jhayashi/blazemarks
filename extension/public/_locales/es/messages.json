@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "Guardar la página actual como marcador." },
   "shortcutWarning": { "message": "No hay atajo asignado. Puede haberse eliminado por un conflicto. Haz clic en \"Configurar\" para asignar uno." },
   "shortcutConfigure": { "message": "Configurar" },
+  "focusSearchLabel": { "message": "Enfocar búsqueda en nueva pestaña" },
+  "focusSearchDescription": { "message": "Enfocar automáticamente el cuadro de búsqueda al abrir una nueva pestaña." },
   "addToReadingList": { "message": "Añadir a la lista de lectura" }
 }

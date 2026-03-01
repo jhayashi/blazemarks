@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "現在のページをブックマークに保存。" },
   "shortcutWarning": { "message": "ショートカットが未設定です。競合により削除された可能性があります。\"設定\"をクリックして設定してください。" },
   "shortcutConfigure": { "message": "設定" },
+  "focusSearchLabel": { "message": "新しいタブで検索にフォーカス" },
+  "focusSearchDescription": { "message": "新しいタブを開いたとき、検索ボックスに自動でフォーカスします。" },
   "addToReadingList": { "message": "リーディングリストに追加" }
 }

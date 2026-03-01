@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "Salva la pagina corrente come segnalibro." },
   "shortcutWarning": { "message": "Nessuna scorciatoia assegnata. Potrebbe essere stata rimossa a causa di un conflitto. Clicca su \"Configura\"." },
   "shortcutConfigure": { "message": "Configura" },
+  "focusSearchLabel": { "message": "Focalizza ricerca in nuova scheda" },
+  "focusSearchDescription": { "message": "Focalizza automaticamente la casella di ricerca quando si apre una nuova scheda." },
   "addToReadingList": { "message": "Aggiungi alla lista di lettura" }
 }

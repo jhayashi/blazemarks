@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "Enregistrer la page actuelle comme marque-page." },
   "shortcutWarning": { "message": "Aucun raccourci attribué. Il a peut-être été supprimé en raison d'un conflit. Cliquez sur \"Configurer\"." },
   "shortcutConfigure": { "message": "Configurer" },
+  "focusSearchLabel": { "message": "Cibler la recherche dans un nouvel onglet" },
+  "focusSearchDescription": { "message": "Cibler automatiquement la barre de recherche lors de l'ouverture d'un nouvel onglet." },
   "addToReadingList": { "message": "Ajouter à la liste de lecture" }
 }

@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "حفظ الصفحة الحالية كإشارة مرجعية." },
   "shortcutWarning": { "message": "لم يتم تعيين اختصار. ربما تمت إزالته بسبب تعارض. انقر على \"تهيئة\" لتعيين واحد." },
   "shortcutConfigure": { "message": "تهيئة" },
+  "focusSearchLabel": { "message": "تركيز البحث في تبويب جديد" },
+  "focusSearchDescription": { "message": "تركيز مربع البحث تلقائيًا عند فتح تبويب جديد." },
   "addToReadingList": { "message": "إضافة إلى قائمة القراءة" }
 }

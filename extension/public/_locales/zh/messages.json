@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "将当前页面保存为书签。" },
   "shortcutWarning": { "message": "未分配快捷键。可能因冲突而被移除。请点击\"配置\"进行设置。" },
   "shortcutConfigure": { "message": "配置" },
+  "focusSearchLabel": { "message": "新标签页聚焦搜索" },
+  "focusSearchDescription": { "message": "打开新标签页时自动聚焦搜索框。" },
   "addToReadingList": { "message": "添加到阅读列表" }
 }

@@ -1,6 +1,7 @@
 import {
   blazemarksUrl,
   customReadingDomains,
+  focusSearch,
   newTabRedirect,
 } from "@/utils/storage";
 import { buildAddUrl } from "@/utils/blazemarks";
@@ -118,9 +119,17 @@ export default defineBackground(() => {
     function onNewTab(tab: browser.Tabs.Tab) {
       const tabUrl = tab.url || tab.pendingUrl;
       if (!tab.id || !tabUrl || !NEW_TAB_URLS.includes(tabUrl)) return;
-      blazemarksUrl.getValue().then((url) => {
-        browser.tabs.update(tab.id!, { url });
-      });
+      Promise.all([blazemarksUrl.getValue(), focusSearch.getValue()]).then(
+        ([url, shouldFocus]) => {
+          let finalUrl = url;
+          if (shouldFocus) {
+            const u = new URL(url);
+            u.searchParams.set("focus", "search");
+            finalUrl = u.toString();
+          }
+          browser.tabs.update(tab.id!, { url: finalUrl });
+        },
+      );
     }
 
     async function startNewTabListener() {

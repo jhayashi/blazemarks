@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "Salvar a página atual como marcador." },
   "shortcutWarning": { "message": "Nenhum atalho atribuído. Pode ter sido removido por conflito. Clique em \"Configurar\" para definir um." },
   "shortcutConfigure": { "message": "Configurar" },
+  "focusSearchLabel": { "message": "Focar pesquisa em nova aba" },
+  "focusSearchDescription": { "message": "Focar automaticamente a caixa de pesquisa ao abrir uma nova aba." },
   "addToReadingList": { "message": "Adicionar à lista de leitura" }
 }

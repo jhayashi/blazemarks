@@ -18,5 +18,7 @@
   "shortcutDescription": { "message": "현재 페이지를 북마크로 저장합니다." },
   "shortcutWarning": { "message": "단축키가 설정되지 않았습니다. 충돌로 인해 제거되었을 수 있습니다. \"설정\"을 클릭하세요." },
   "shortcutConfigure": { "message": "설정" },
+  "focusSearchLabel": { "message": "새 탭에서 검색에 포커스" },
+  "focusSearchDescription": { "message": "새 탭을 열 때 검색 상자에 자동으로 포커스합니다." },
   "addToReadingList": { "message": "읽기 목록에 추가" }
 }

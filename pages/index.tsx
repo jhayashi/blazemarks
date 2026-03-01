@@ -1,7 +1,7 @@
 import { sqliteTrue } from "@evolu/common";
 import { useQuery } from "@evolu/react";
 import { create, props } from "@stylexjs/stylex";
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { BookmarkList } from "../components/BookmarkList";
 import { EditableTitle } from "../components/EditableTitle";
 import { FilterBar } from "../components/FilterBar";
@@ -34,6 +34,21 @@ function HomeContent() {
   const settings = useQuery(getSettingsQuery());
 
   const settingsRow = settings.length > 0 ? settings[0] : undefined;
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("focus") === "search") {
+      searchInputRef.current?.focus();
+      params.delete("focus");
+      const newUrl =
+        window.location.pathname +
+        (params.toString() ? `?${params.toString()}` : "") +
+        window.location.hash;
+      window.history.replaceState(null, "", newUrl);
+    }
+  }, []);
 
   const {
     query,
@@ -97,6 +112,7 @@ function HomeContent() {
       <div {...props(styles.searchRow)}>
         <div {...props(styles.searchWrapper)}>
           <input
+            ref={searchInputRef}
             type="search"
             placeholder={t("home.searchPlaceholder")}
             value={query}

@@ -2,6 +2,7 @@ import { sqliteTrue } from "@evolu/common";
 import { useQuery } from "@evolu/react";
 import { create, props } from "@stylexjs/stylex";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 import { BookmarkList } from "../components/BookmarkList";
 import { EditableTitle } from "../components/EditableTitle";
 import { FilterBar } from "../components/FilterBar";
@@ -93,6 +94,25 @@ function HomeContent() {
     window.open(url, "_blank", "noopener");
   }, [query, chatProviderId]);
 
+  const showSearchChat = settingsRow?.showSearchChat === sqliteTrue;
+
+  const handleSearchKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
+      // Enter mirrors the Chat button, Shift+Enter the Search button — but
+      // only when those buttons are enabled and there is a query, so a stray
+      // Enter while filtering bookmarks never opens a provider.
+      if (!showSearchChat || !query.trim()) return;
+      e.preventDefault();
+      if (e.shiftKey) {
+        handleWebSearch();
+      } else {
+        handleChatSearch();
+      }
+    },
+    [showSearchChat, query, handleWebSearch, handleChatSearch],
+  );
+
   const hasBookmarks = bookmarks.length > 0;
 
   return (
@@ -117,6 +137,7 @@ function HomeContent() {
             placeholder={t("home.searchPlaceholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleSearchKeyDown}
             {...props(styles.searchBox)}
           />
           {query && (
@@ -130,7 +151,7 @@ function HomeContent() {
             </button>
           )}
         </div>
-        {settingsRow?.showSearchChat === sqliteTrue && (
+        {showSearchChat && (
           <div {...props(styles.providerButtons)}>
             <button
               type="button"

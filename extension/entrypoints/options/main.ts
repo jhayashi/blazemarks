@@ -53,6 +53,14 @@ newtabToggle.addEventListener("change", async () => {
 // --- Focus search on new tab ---
 
 async function loadFocusSearchToggle() {
+  // Chrome never lets the new tab page take keyboard focus from the address
+  // bar (verified: focus() sets activeElement but document.hasFocus() stays
+  // false, and tabs.create+remove doesn't help either). Firefox supports
+  // this via tab replacement, so the setting only exists there.
+  if (!isFirefoxBrowser) {
+    document.getElementById("focus-search-section")?.classList.add("hidden");
+    return;
+  }
   focusSearchToggle.checked = await focusSearch.getValue();
 }
 

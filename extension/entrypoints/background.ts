@@ -127,6 +127,12 @@ export default defineBackground(() => {
             u.searchParams.set("focus", "search");
             finalUrl = u.toString();
           }
+          // Note: Chrome never lets a new tab's page take keyboard focus
+          // from the address bar — focus() only sets document.activeElement
+          // while document.hasFocus() stays false, and replacing the tab via
+          // tabs.create+remove doesn't help either (address-bar focus is
+          // window-sticky). The ?focus=search param is still appended so the
+          // search box is the active element once the page gains focus.
           browser.tabs.update(tab.id!, { url: finalUrl });
         },
       );

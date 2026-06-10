@@ -2,7 +2,7 @@ import { sqliteTrue } from "@evolu/common";
 import { useQuery } from "@evolu/react";
 import { create, props } from "@stylexjs/stylex";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
-import type { KeyboardEvent } from "react";
+import type { FormEvent, KeyboardEvent } from "react";
 import { BookmarkList } from "../components/BookmarkList";
 import { EditableTitle } from "../components/EditableTitle";
 import { FilterBar } from "../components/FilterBar";
@@ -96,15 +96,29 @@ function HomeContent() {
 
   const showSearchChat = settingsRow?.showSearchChat === sqliteTrue;
 
+  // Enter mirrors the Chat button, Shift+Enter the Search button. The
+  // providers are opened from the form's submit event, not keydown: Firefox
+  // only allows window.open from whitelisted event types
+  // (dom.popup_allowed_events), which include "submit" but no keyboard
+  // events. Native implicit submission also suppresses Enter during IME
+  // composition for free. The keydown handler just records the modifier.
+  const shiftEnterRef = useRef(false);
+
   const handleSearchKeyDown = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
-      // Enter mirrors the Chat button, Shift+Enter the Search button — but
-      // only when those buttons are enabled and there is a query, so a stray
-      // Enter while filtering bookmarks never opens a provider.
-      if (!showSearchChat || !query.trim()) return;
+      if (e.key === "Enter") shiftEnterRef.current = e.shiftKey;
+    },
+    [],
+  );
+
+  const handleSearchSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      // Always prevent the default GET navigation; the guards below decide
+      // whether anything happens, so a stray Enter while filtering
+      // bookmarks never opens a provider.
       e.preventDefault();
-      if (e.shiftKey) {
+      if (!showSearchChat || !query.trim()) return;
+      if (shiftEnterRef.current) {
         handleWebSearch();
       } else {
         handleChatSearch();
@@ -130,7 +144,7 @@ function HomeContent() {
       <StarredShortcuts bookmarks={bookmarks} />
 
       <div {...props(styles.searchRow)}>
-        <div {...props(styles.searchWrapper)}>
+        <form onSubmit={handleSearchSubmit} {...props(styles.searchWrapper)}>
           <input
             ref={searchInputRef}
             type="search"
@@ -150,7 +164,7 @@ function HomeContent() {
               &times;
             </button>
           )}
-        </div>
+        </form>
         {showSearchChat && (
           <div {...props(styles.providerButtons)}>
             <button

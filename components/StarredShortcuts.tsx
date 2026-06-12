@@ -180,7 +180,9 @@ const styles = create({
     display: "flex",
     alignItems: "center",
     gap: spacing.xxs,
-    paddingBlock: spacing.xxxs,
+    // Literal: every spacing.* token resolves to the 1rem placeholder (no
+    // spacing theme overrides them), so tokens can't express a smaller pad.
+    paddingBlock: "0.5rem",
     paddingInline: spacing.s,
     backgroundColor: colors.hoverAndFocusBackground,
     borderRadius: 8,

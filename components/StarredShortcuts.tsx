@@ -180,7 +180,7 @@ const styles = create({
     display: "flex",
     alignItems: "center",
     gap: spacing.xxs,
-    paddingBlock: spacing.xs,
+    paddingBlock: spacing.xxxs,
     paddingInline: spacing.s,
     backgroundColor: colors.hoverAndFocusBackground,
     borderRadius: 8,

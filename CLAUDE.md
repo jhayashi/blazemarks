@@ -15,6 +15,9 @@ bunx tsc --noEmit             # type check (no package script for this)
 
 There is no test suite.
 
+Deployment: the deploy script (`deploy-blazemarks.sh`) lives in the private
+`jhayashi/infra` repo, not here — it builds and rsyncs `out/` to the droplet.
+
 Browser extension (separate WXT project with its own lockfile):
 
 ```bash

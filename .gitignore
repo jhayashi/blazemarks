@@ -48,3 +48,6 @@ public/worker-*.js.map
 
 # Local Netlify folder
 .netlify
+
+# TypeScript incremental build cache
+*.tsbuildinfo
